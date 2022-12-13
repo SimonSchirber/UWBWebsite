@@ -1,10 +1,4 @@
-#Final Report
-
-## Project Links
-* [Proposal](proposal)
-* [Midterm Checkpoint Presentation Slides](http://)
-* [Final Presentation Slides](https://docs.google.com/presentation/d/1ARPfKs8R3b8PLh7hjExXQs66cmnulIzx0FZq7Vi8yAQ/edit?usp=sharing)
-* [Final Report](report)
+# Final Report
 
 # Table of Contents
 * Abstract
@@ -48,3 +42,10 @@ Current estimates expect the number of IoT devices to hit 30 Billion by 2025 wit
 
 [1] https://explodingtopics.com/blog/iot-stats
 [2] 
+
+
+## Project Links
+* [Proposal](proposal)
+* [Midterm Checkpoint Presentation Slides](http://)
+* [Final Presentation Slides](https://docs.google.com/presentation/d/1ARPfKs8R3b8PLh7hjExXQs66cmnulIzx0FZq7Vi8yAQ/edit?usp=sharing)
+* [Final Report](report)

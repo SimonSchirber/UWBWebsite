@@ -2,7 +2,7 @@
 
 Using IMU and UWB sensor fusion to provide localization and orientation measurments that can be used for intuitive smart home control.
 
-# Team
+# Team Members
 
 * Simon Schirber 
 * James Migdal
