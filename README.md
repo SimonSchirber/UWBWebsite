@@ -8,3 +8,5 @@ Use the folders as follows:
 * data/ for data data used in your project
 
 You may add additional folders as necessary.
+
+![alt text] (docs/media/phone.png?raw=True "User pointing phone for device recognition and control")
