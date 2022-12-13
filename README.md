@@ -1,7 +1,6 @@
-# ecem202a_project
-This is repository template for UCLA ECEM202A / CSM213A projects.
+# ECE 202 UWB Project
 
-Use the folders as follows:
+Folders  areused as follows:
 
 * doc/ for website content
 * software/ for code used in your project
@@ -9,6 +8,6 @@ Use the folders as follows:
 
 You may add additional folders as necessary.
 
-![alt text](https://github.com/SimonSchirber/UWBWebsite/tree/main/docs/media/phone.png)
+
 
 ![alt text](./docs/media/phone.png?raw=True "User pointing phone for device recognition and control")
