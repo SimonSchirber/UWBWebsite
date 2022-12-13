@@ -1,12 +1,11 @@
 # Abstract
 
-Provide a brief overview of the project objhectives, approach, and results.
+Using IMU and UWB sensor fusion to provide localization and orientation measurments that can be used for intuitive smart home control.
 
 # Team
 
-* Name of team member \#1 
-* Name of team member \#2 (delete this if necessary)
-* Name of team member \#3 (delete this if necessary)
+* Simon Schirber 
+* James Migdal
 
 # Required Submissions
 
