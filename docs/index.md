@@ -11,5 +11,5 @@ Using IMU and UWB sensor fusion to provide localization and orientation measurme
 
 * [Proposal](proposal)
 * [Midterm Checkpoint Presentation Slides](http://)
-* [Final Presentation Slides](http://)
+* [Final Presentation Slides](https://docs.google.com/presentation/d/1ARPfKs8R3b8PLh7hjExXQs66cmnulIzx0FZq7Vi8yAQ/edit?usp=sharing)
 * [Final Report](report)
