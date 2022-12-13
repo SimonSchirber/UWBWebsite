@@ -9,4 +9,5 @@ Use the folders as follows:
 
 You may add additional folders as necessary.
 
+![alt text](https://github.com/SimonSchirber/UWBWebsite/tree/main/docs/media/phone.png?raw=true)
 ![alt text] (./docs/media/phone.png?raw=True "User pointing phone for device recognition and control")
