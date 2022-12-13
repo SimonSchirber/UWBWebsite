@@ -7,7 +7,7 @@ Using IMU and UWB sensor fusion to provide localization and orientation measurme
 * Simon Schirber 
 * James Migdal
 
-# Required Submissions
+# Submission Links
 
 * [Proposal](proposal)
 * [Midterm Checkpoint Presentation Slides](http://)

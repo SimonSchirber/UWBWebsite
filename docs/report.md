@@ -17,11 +17,12 @@
 
 # Abstract
 
-Provide a brief overview of the project objhectives, approach, and results.
+Current estimates expect the number of IoT devices to hit 30 Billion by 2025 with continous exponential growth[1]. With the growth of avaiable devices, the number of smart devices that each user has to manage also continues to grow. This increase in devices per user, makes it continuously harder for users to manage and control their devices in an intuitive way. This project aims at uing UWB and IMU sensor fusion to precisely be able track a users phone position and orientation. Theses measurments allow for users to control multiple smart devices in a room by simply pointing their phone at the device they wish to control.
+
 
 # 1. Introduction
 
-This section should cover the following items:
+
 
 * Motivation & Objective: What are you trying to do and why? (plain English without jargon)
 * State of the Art & Its Limitations: How is it done today, and what are the limits of current practice?
@@ -40,3 +41,6 @@ This section should cover the following items:
 # 5. Discussion and Conclusions
 
 # 6. References
+
+[1] https://explodingtopics.com/blog/iot-stats
+[2] 
