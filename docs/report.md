@@ -19,12 +19,12 @@
 
 Current estimates expect the number of IoT devices to hit 30 Billion by 2025 with continous exponential growth[1]. With the growth of avaiable devices, the number of smart devices that each user has to manage also continues to grow. This increase in devices per user, makes it continuously harder for users to manage and control their devices in an intuitive way. This project aims at uing UWB and IMU sensor fusion to precisely be able track a users phone position and orientation. Theses measurments allow for users to control multiple smart devices in a room by simply pointing their phone at the device they wish to control.
 
-
+![alt text] (https://github.com/SimonSchirber/UWBWebsite/tree/main/docs/media/phone.png)
 # 1. Introduction
 
+* Motivation & Objective: 
+ 
 
-
-* Motivation & Objective: What are you trying to do and why? (plain English without jargon)
 * State of the Art & Its Limitations: How is it done today, and what are the limits of current practice?
 * Novelty & Rationale: What is new in your approach and why do you think it will be successful?
 * Potential Impact: If the project is successful, what difference will it make, both technically and broadly?
