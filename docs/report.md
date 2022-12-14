@@ -13,7 +13,10 @@
 
 As the number of smart devices in a household continues to grow there is need for a system to distinguish and control said devices. The goal of this project is develop as system on top of the sensors available in current smartphones to allow a user to interact with multiple smart devices indoors. Current smartphones are equipped with both IMU sensing and UWB ranging, by leveraging these sensors we have created a system to introduce two UWB anchors in a known space to facilitate localization in said space. Then, by combining the location estimate with the IMU data for where the user is pointing their smartphone a smart device in a room can be selected. After this selection is made the user can control the smart device and the stimulus is broadcasted over BLE.
 
-![alt text](./media/phone.png?raw=True "User pointing phone for device recognition and control") 
+<p align='center'>
+  <img width="400" src="./media/phone.png" alt="User pointing phone for device recognition and control">
+</p>
+
 # 1. Introduction
 
 ## Motivation & Objective
@@ -53,7 +56,7 @@ UWB Indoor Localization
 In a paper by Zwirello et al. [CITE] indoor localization using UWB is done by rigging a space with many anchors and ranging to a tag somewhere in the space. This group analyzed both the optimal locations for placing UWB in a space as well as the optimal algorithms for converting the ranging data into an absolute position. The following figure shows an example scheme of anchors in a cube space.
 
 <p align='center'>
-  <img width="200" src="./media/UWB_range.png" alt="UWB Anchor Positioning Example">
+  <img width="400" src="./media/UWB_range.png" alt="UWB Anchor Positioning Example">
 </p>
 
 The goal of this group was to find and optimal positioning algorithm that could use many anchors to find very precise location. For systems using few UWB anchors they found that the optimal approach is to simple estimate the location of the tag as somewhere on the surface of a sphere centered at each anchor with a radius equal to the range measurment. For a 3-D space, 4 anchors are need to pinpoint the location of a tag to one point. As this project uses a maximum of 2 anchors, the best estimate is somewhere on a circle that is the intersection of 2 spheres. A representation of this intersection is shown in the figure below.
