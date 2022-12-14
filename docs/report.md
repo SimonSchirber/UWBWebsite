@@ -61,12 +61,16 @@ In a paper by Zwirello et al. [CITE] indoor localization using UWB is done by ri
 
 The goal of this group was to find and optimal positioning algorithm that could use many anchors to find very precise location. For systems using few UWB anchors they found that the optimal approach is to simple estimate the location of the tag as somewhere on the surface of a sphere centered at each anchor with a radius equal to the range measurment. For a 3-D space, 4 anchors are need to pinpoint the location of a tag to one point. As this project uses a maximum of 2 anchors, the best estimate is somewhere on a circle that is the intersection of 2 spheres. A representation of this intersection is shown in the figure below.
 
-![alt text](./media/sphere_intersect.png?raw=True "Intersection of 2 Spheres") 
+<p align='center'>
+  <img width="400" src="./media/sphere_intersect.png" alt="Intersection of 2 Spheres">
+</p>
 
 IMU Indoor Localization
 In a paper by Ibrahim et al. [CITE] indoor localization was achieved using a 9-DOF IMU sensor and a barometric pressure sensor. The basis of the system was to find the derivative of the acceleration to obtain the jerk and then take the triple integration to determine displacement. This is done in an attempt to reduce the effects of sensor drift on the overall measurements. The pressure measurement was used to estimate the height by making assumptions about how atmospheric pressure decreases as height increases. They then passed these measurements through a Kalman filter to find the displacement estimates and were able to track a walk through a multi-story building withing 3% error. The graph of this experiment is shown in the figure below.
 
-![alt text](./media/IMU_experiment.png?raw=True "IMU Localization Experimetnt [CITE]") 
+<p align='center'>
+  <img width="400" src="./media/IMU_experiment.png" alt="IMU Localization Experimetnt [CITE]">
+</p>
 
 This data is very impressive and lends some support to the feasibility of doing human localiztion with IMU data but it relied on several crucial assumptions. The assumptions made by this group was that the subject have the IMU sensor attached at the belt and that the subject always be moving forward. For this project, the user must be allowed to wave their smartphone around the room to point at smart devices and so the assumption of having the IMU be fixed on the body was simply not feasible. Allowing the user to wave the smartphone around introduces far too much noise in the reading the come up with any useful data to predict position from the IMU data.
 # 3. Technical Approach
@@ -75,11 +79,16 @@ This data is very impressive and lends some support to the feasibility of doing 
 - BN055 9-axis IMU
 - ESP32 Wrover
 - Qorvo DWM300 (1 Initiator, 1 Tag)
-![alt text](./media/sensors.png?raw=True "User pointing phone for device recognition and control")
+
+<p align='center'>
+  <img width="400" src="./media/sensors.png" alt="User pointing phone for device recognition and control">
+</p>
 
 ## Sensor Fusion Approach
 
-![alt text](./media/Pose_estimation.png?raw=True "Orientation and Pose Estimation")
+<p align='center'>
+  <img width="400" src="./media/Pose_estimation.png" alt="Orientation and Pose Estimation">
+</p>
 
 To achieve accurate detection of where a user is pointing a controller in free space, the two measurements that are needed are orientation estimation (Alpha, Beta, Gamma), and pose estimation (x, y, z). 
 
@@ -87,7 +96,9 @@ To obtain an oreintation estimation the 9 axis IMU was used. There are two ways 
 
 To obtain a pose estimation, the goal of the project was to use the orientation estimation and fuse it with IMU and UWB measurements to get X, Y an Z cordinates. In theory there are two methods to get position with this approach. The first is if you relative know orientation of the controller to the room you are in, you can perform a tranformational rotation on the Acceleration sensors to get relative x, y, and z positional accelerations.
 
-![alt text](./media/rotation.png?raw=True "Rotation of Raw Accelerometer Values to get true Ax, Ay, Az values") 
+<p align='center'>
+  <img width="400" src="./media/rotation.png" alt="Rotation of Raw Accelerometer Values to get true Ax, Ay, Az values">
+</p>
 
 By using the above translated accelerations, you can integrate acceleration to get velocity, and integrate velocity to get position. The biggest limiting factor with this approach is that the acceleromter is prone to drift and since position is a result of a double integrtaion, accumulation of positional error can be accumulated. The second method that was initially intended to be used to estimate positionwas using one UWB anchor and tag, where the initial anchor position in the room was known. By having ine tag in the room and getting a distance measurment from the UWB. there is essentially a sphere of possible positions that the tag could be in realtion to the anchor. The idea was that over time if we combined both positional observation from the acceleration and distance observations from the UWB anchor, the locations where are user is could be to see these observations overtime could mean the user was only in one spot.
 
