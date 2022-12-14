@@ -110,7 +110,7 @@ To test the accuracies of accelerometer readings, a stationary IMU test was perf
 
 # IMU Orientation Estimation Evaluation
 
-To test the accuracies of the Alpha, Beta, and Gamma values provided by the IMU fusion sensor, a stationary angle test was performed for reach respective angle. For each test, the user would move around the controller for five seconds, then place the controller at the repective angle stationary for 5 seconds before an angle sample was taken. 
+To test the accuracies of the Alpha, Beta, and Gamma values provided by the IMU fusion sensor, a stationary angle test was performed for reach respective angle. For each test, the user would move around the controller for five seconds, then place the controller at the repective angle stationary for 5 seconds before an angle sample was taken. In total, 6 Alpha angles (0-360), 9 Beta angles  
 
 <p align='center'>
   <figure>
