@@ -27,7 +27,7 @@ Current estimates expect the number of IoT devices to hit 30 Billion by 2025 wit
 
 Most localization techniques used today include GPS, bluetooth, or Wi-fi ranging. The localizations techniques have accuracies in the range of 1-5m and so are generally not considered to be precise enough to distinguish interactions in a typical home setting. Additionally these techniques each have ranging capabilities which also can have limitations such as not being in a building with cement walls for GPS and being within close proximity for BLE and Wifi. UWB ranging techniques on the other hand offers localization accuracies within +/-20cm per anchor tag pair. This localization precision is required for accurate indoor user interation tracking. 
 
-# Novelty, Rationale:, and Impact: 
+# Novelty, Rationale, and Impact: 
 
 This project is novel because it present a feasable method for intuitively managing smart devices, and provides a novel approach localization techniques using UWB and IMU data that could stretch beyond the intended use case. 
 
@@ -42,6 +42,7 @@ This project is novel because it present a feasable method for intuitively manag
 - Filter UWB position etimates to allow for continous/not noisy readings
 - Create GUI which illustrates position of objects in the room and the guesses of which object the device is interacting
 - Demonstrate the use of a controller on a smart object
+
 # Metrics of Success: 
 - Positional Accuracy (x, y, z)
 - Orientation Accuracy (Alpha, Beta, Gamma)
@@ -76,13 +77,14 @@ This data is very impressive and lends some support to the feasibility of doing 
 # 3. Technical Approach
 
 ## Hardware
+<p align='center'>
+  <img width="400" src="./media/Sensors.png" alt="User pointing phone for device recognition and control">
+</p>
 - BN055 9-axis IMU
 - ESP32 Wrover
 - Qorvo DWM300 (1 Initiator, 1 Tag)
 
-<p align='center'>
-  <img width="400" src="./media/sensors.png" alt="User pointing phone for device recognition and control">
-</p>
+
 
 ## Sensor Fusion Approach
 
@@ -138,6 +140,9 @@ To test the accuracies of the Alpha, Beta, and Gamma values provided by the IMU 
 # UWB Position Estimation Evaluation
 In oder to get accurate antennas readings for the UWB, each anchor antenna had to be tuned. Since the distance cacluclation includes both ToF and internal anchor delays, the anchor delay for each antenna had to be tested. To do this, the anchor antennas were pinned at known distance locations and the relative time/distance calculations were made based off assumptions of various  offsets, and then the delay was calculated by integrating the errors for each offset. After tuning the antennas, the UWB measurements were still noisy and inconsistantly reading within the  specified +/- 30cm accuracy of the devices. To reduce the noise, a 10 sample 10Hz moving average filter was applied and UWB measurements were then able to fall within the specified accuracies.
 # Line of Sight Object Detection
+
+
+# GUI
 
 # 5. Discussion and Conclusions
 
