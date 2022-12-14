@@ -14,7 +14,7 @@
 As the number of smart devices in a household continues to grow there is need for a system to distinguish and control said devices. The goal of this project is develop as system on top of the sensors available in current smartphones to allow a user to interact with multiple smart devices indoors. Current smartphones are equipped with both IMU sensing and UWB ranging, by leveraging these sensors we have created a system to introduce two UWB anchors in a known space to facilitate localization in said space. Then, by combining the location estimate with the IMU data for where the user is pointing their smartphone a smart device in a room can be selected. After this selection is made the user can control the smart device and the stimulus is broadcasted over BLE.
 
 <p align='center'>
-  <img width="400" src="./media/phone.png" alt="User pointing phone for device recognition and control">
+  <img width="300" src="./media/phone.png" alt="User pointing phone for device recognition and control">
 </p>
 
 # 1. Introduction
@@ -131,6 +131,10 @@ To test the accuracies of the Alpha, Beta, and Gamma values provided by the IMU 
 
 
 # Updated Postion approach
+
+After discovering the noise that was present on the accelerometers, the next decision that was made was to try and filter the accelerometer noise. A bandpass filter was added to the accelerometer with the high pass frequency meant to filter out the drift/consistant error that were read in the error from the transformations and the drift of the sensors and low pass meant to filter out the noise in the accelerometers. The first step was to see if we could get indications of the direction that the controller was moving in a point in time, assuming that the object was at zero velocity. We were able to get gerneral direction indiciations based on seeing accelerometer turning iniitially positive in one direction and the negative shortly after when the object deaccelerated. Anytime that this data was integrated however, the data would inconsistantly accumulate velocity values to the point where often times the velocity would indicate that object was moving quickly in the reverse direction. Additionally, when the controller was tested not moving parrallel to one of the accelerometer axis and transmations were applied to get direction, the error that was accumulated due to incorrect angle transformations with gravitational acceleration was so significant that it rendered any non parrallel axis movement useless for giving information about directional movements.
+
+
 ### Trick One
 
 
