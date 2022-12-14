@@ -65,13 +65,9 @@ To obtain an oreintation estimation the 9 axis IMU was used. There are two ways 
 
 To obtain a pose estimation, the goal of the project was to use the orientation estimation and fuse it with IMU and UWB measurements to get X, Y an Z cordinates. In theory there are two methods to get position with this approach. The first is if you relative know orientation of the controller to the room you are in, you can perform a tranformational rotation on the Acceleration sensors to get relative x, y, and z positional accelerations.
 
-![alt text](./media/phone.png?raw=True "Rotation of Raw Accelerometer Values to get true Ax, Ay, Az values") 
+![alt text](./media/rotation.png?raw=True "Rotation of Raw Accelerometer Values to get true Ax, Ay, Az values") 
 
-By using the above translated accelerations, you can integrate acceleration to get velocity, and integrate velocity to get position. The biggest limiting factor with this approach is that the acceleromter is prone to drift and since position is a result of a double integrtaion, accumulation of positional error can be accumulated. The second method that was initially intended to be used to estimate positionwas using one UWB anchor and tag, where the initial anchor position in the room was known. By having ine tag in the room and getting a distance measurment from the UWB. there is essentially a sphere of possible positions that the tag could be in realtion to the anchor. The idea was that over time if we combined both positional observation from the acceleration and distance observations from the UWB anchor, the poosible locations where are user is located could be narrowed enough to provide estimates
-
-
-
-
+By using the above translated accelerations, you can integrate acceleration to get velocity, and integrate velocity to get position. The biggest limiting factor with this approach is that the acceleromter is prone to drift and since position is a result of a double integrtaion, accumulation of positional error can be accumulated. The second method that was initially intended to be used to estimate positionwas using one UWB anchor and tag, where the initial anchor position in the room was known. By having ine tag in the room and getting a distance measurment from the UWB. there is essentially a sphere of possible positions that the tag could be in realtion to the anchor. The idea was that over time if we combined both positional observation from the acceleration and distance observations from the UWB anchor, the locations where are user is could be to see these observations overtime could mean the user was only in one spot.
 
 # 4. Evaluation and Results
 
