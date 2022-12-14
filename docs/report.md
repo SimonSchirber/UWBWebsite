@@ -34,14 +34,54 @@ This project is novel because it present a feasable method for intuitively manag
 - accuratly fusing orientation and position to make predictions about intended line of sight object selections
 
 # Requirements for Success: 
-- 
+- Create a "Smart Controller" with IMU and UWB sensor to ESP32 microcontroller to be used to test accuracies.
+- Tune UWB tag and initiator antennas to offer accurate measurements
+- Filter UWB position etimates to allow for continous/not noisy readings
+- Create GUI which illustrates position of objects in the room and the guesses of which object the device is interacting
+- Demonstrate the use of a controller on a smart object
 # Metrics of Success: 
+- Positional Accuracy (x, y, z)
+- Orientation Accuracy (Alpha, Beta, Gamma)
+- Cost requirements/sensors needed to perform localization
+- Ability of controller to distinguish between multiple objects in a room
 
 # 2. Related Work
 
 # 3. Technical Approach
 
+## Hardware
+- BN055 9-axis IMU
+- ESP32 Wrover
+- Qorvo DWM300 (1 Initiator, 1 Tag)
+![alt text](./docs/media/sensors.png?raw=True "User pointing phone for device recognition and control")
+
+## Sensor Fusion Approach
+
+![alt text](./docs/media/Pose_estimation.png?raw=True "Orientation and Pose Estimation")
+
+To achieve accurate detection of where a user is pointing a controller in free space, the two measurements that are needed are orientation estimation (Alpha, Beta, Gamma), and pose estimation (x, y, z). 
+
+To obtain an oreintation estimation the 9 axis IMU was used. There are two ways that a 9 axis IMU can detect orientation.The first method is by sensing where the magnetic fields point with the magnetometer and where gravity acceleration is pointing with the accelerometer, and then finding the cross product of theses two vectors we can get orientation. The second method is if we know the original orientation and the gyroscope is working perfectly, the angular rotation multiplied by time will tell us the orientation of an object. The IMU and built in Arm Cortex M0 microprocessor in the BN055 provide cutom software to fuse these two estimation together relying partially on measurments from each to make a fused orientation estimate which can be update at 100Hz.  
+
+To obtain a pose estimation, the goal of the project was to use the orientation estimation and fuse it with IMU and UWB measurements to get X, Y an Z cordinates. In theory there are two methods to get position with this approach. The first is if you relative know orientation of the controller to the room you are in, you can perform a tranformational rotation on the Acceleration sensors to get relative x, y, and z positional accelerations.
+
+![alt text](./media/phone.png?raw=True "Rotation of Raw Accelerometer Values to get true Ax, Ay, Az values") 
+
+By using the above translated accelerations, you can integrate acceleration to get velocity, and integrate velocity to get position. The biggest limiting factor with this approach is that the acceleromter is prone to drift and since position is a result of a double integrtaion, accumulation of positional error can be accumulated. The second method that was initially intended to be used to estimate positionwas using one UWB anchor and tag, where the initial anchor position in the room was known. By having ine tag in the room and getting a distance measurment from the UWB. there is essentially a sphere of possible positions that the tag could be in realtion to the anchor. The idea was that over time if we combined both positional observation from the acceleration and distance observations from the UWB anchor, the poosible locations where are user is located could be narrowed enough to provide estimates
+
+
+
+
+
 # 4. Evaluation and Results
+
+
+# Updated Postion approach
+### Trick One
+
+### Trick Two
+
+# Line of Sight Object Detection
 
 # 5. Discussion and Conclusions
 
