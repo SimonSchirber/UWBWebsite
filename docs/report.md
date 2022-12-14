@@ -14,7 +14,7 @@
 As the number of smart devices in a household continues to grow there is need for a system to distinguish and control said devices. The goal of this project is develop as system on top of the sensors available in current smartphones to allow a user to interact with multiple smart devices indoors. Current smartphones are equipped with both IMU sensing and UWB ranging, by leveraging these sensors we have created a system to introduce two UWB anchors in a known space to facilitate localization in said space. Then, by combining the location estimate with the IMU data for where the user is pointing their smartphone a smart device in a room can be selected. After this selection is made the user can control the smart device and the stimulus is broadcasted over BLE.
 
 <p align='center'>
-  <img width="300" src="./media/phone.png" alt="User pointing phone for device recognition and control">
+  <img width="200" src="./media/phone.png" alt="User pointing phone for device recognition and control">
 </p>
 
 # 1. Introduction
@@ -89,7 +89,7 @@ This hardware was then put together on a breadboard which had a push button and 
 
 <p align='center'>
   <figure>
-    <img width="300" src="./media/controller.png" alt="IMU drift">
+    <img align='center' width="200" src="./media/controller.png" alt="IMU drift">
     <figcaption align='center'>UWB + IMU "smart Controller"</figcaption>
   </figure>
 </p>
@@ -99,7 +99,7 @@ This hardware was then put together on a breadboard which had a push button and 
 <p align='center'>
   <figure>
     <img width="800" src="./media/Pose_estimation.png" alt="IMU drift">
-    <figcaption align='center'>Fused Methods to Detect Orientation and Pose</figcaption>
+    <figcaption align='center'>Methods to Detect Orientation and Pose Estimations</figcaption>
   </figure>
 </p>
 
@@ -138,7 +138,7 @@ To test the accuracies of the Alpha, Beta, and Gamma values provided by the IMU 
 
 <p align='center'>
   <figure>
-    <img width="300" src="./media/angle_data.png" alt="IMU drift">
+    <img width="800" src="./media/angle_data.png" alt="IMU drift">
     <figcaption align='center'>True Angle Versus Angle Estimation</figcaption>
   </figure>
 </p>
@@ -176,7 +176,7 @@ The final idea used was to strategically plave the anchors. If we are assume we 
 
 <p align='center'>
   <figure>
-    <img width="400" src="./media/trick2.png" alt="IMU drift">
+    <img align='center' width="400" src="./media/trick2.png" alt="IMU drift">
     <figcaption align='center'>Trick 2: Strategic Anchor placement (Room circle intersects)</figcaption>
   </figure>
 </p>
@@ -200,7 +200,7 @@ When an object pointed at and the button on the controller is clicked, an illust
 
 <p align='center'>
   <figure>
-    <img width="800" src="./media/gui.PNG" alt="gui">
+    <img align='center' width="800" src="./media/gui.PNG" alt="gui">
     <figcaption align='center'>Image of GUI with user selecting/controlling bluetooth speaker </figcaption>
   </figure>
 </p>
