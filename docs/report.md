@@ -89,10 +89,11 @@ This hardware was then put together on a breadboard which had a push button and 
 
 <p align='center'>
   <figure>
-    <img align='center' width="200" src="./media/controller.png" alt="IMU drift">
+    <img width="200" src="./media/controller.png" alt="IMU drift">
     <figcaption align='center'>UWB + IMU "smart Controller"</figcaption>
   </figure>
 </p>
+
 
 ## Sensor Fusion Approach
 
@@ -169,6 +170,7 @@ After using the controller in a experiment setting, one observation was that mos
   </figure>
 </p>
 
+
 ### Trick Two
 The next idea was to reduce the possible locations of the intersection of two circles from after applying trick 1. One initial idea was if we know the initial location, you can make assumtions about which of the two possible solutions in the circle intersects that the user would be in based on the fact that the user cannot just jump around between readings and so taking the closer solution to the previous solution. Though this may work, if the two intersections are close and the controller gets off then the estimations would quickly become bery incorrect. 
 
@@ -176,7 +178,7 @@ The final idea used was to strategically plave the anchors. If we are assume we 
 
 <p align='center'>
   <figure>
-    <img align='center' width="400" src="./media/trick2.png" alt="IMU drift">
+    <img width="400" src="./media/trick2.png" alt="IMU drift">
     <figcaption align='center'>Trick 2: Strategic Anchor placement (Room circle intersects)</figcaption>
   </figure>
 </p>
