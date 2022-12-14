@@ -89,7 +89,7 @@ This hardware was then put together on a breadboard which had a push button and 
 
 <p align='center'>
   <figure>
-    <img width="800" src="./media/controller.png" alt="IMU drift">
+    <img width="300" src="./media/controller.png" alt="IMU drift">
     <figcaption align='center'>UWB + IMU "smart Controller"</figcaption>
   </figure>
 </p>
@@ -151,7 +151,7 @@ After holding the controller that was designed, one observation that was made wa
 
 <p align='center'>
   <figure>
-    <img width="800" src="./media/trick1.png" alt="IMU drift">
+    <img width="400" src="./media/trick1.png" alt="IMU drift">
     <figcaption align='center'>Trick 1: Assme fixed height (Interection of plane and a sphere)</figcaption>
   </figure>
 </p>
@@ -161,7 +161,7 @@ The next idea was to reduce the possible locations of the intersection of two ci
 
 <p align='center'>
   <figure>
-    <img width="800" src="./media/trick1.png" alt="IMU drift">
+    <img width="400" src="./media/trick2.png" alt="IMU drift">
     <figcaption align='center'>Trick 2: Strategic Anchor placement (Room circle intersects)</figcaption>
   </figure>
 </p>
@@ -187,7 +187,7 @@ When an object pointed at and the button on the controller is clicked an illustr
 <p align='center'>
   <figure>
     <img width="800" src="./media/gui.PNG" alt="gui">
-    <figcaption align='center'>Image of GUI with </figcaption>
+    <figcaption align='center'>Image of GUI with user selecting/controlling bluetooth speaker </figcaption>
   </figure>
 </p>
 
