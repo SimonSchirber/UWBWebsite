@@ -132,6 +132,13 @@ To test the accuracies of the Alpha, Beta, and Gamma values provided by the IMU 
 
 <p align='center'>
   <figure>
+    <img width="300" src="./media/angle_data.png" alt="IMU drift">
+    <figcaption align='center'>True Angle Versus Angle Estimation</figcaption>
+  </figure>
+</p>
+
+<p align='center'>
+  <figure>
     <img width="800" src="./media/Angle_Error.png" alt="IMU drift">
     <figcaption align='center'>Average Angle Error for Alpha, Beta, Gamma angles</figcaption>
   </figure>
