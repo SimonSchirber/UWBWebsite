@@ -152,26 +152,46 @@ After holding the controller that was designed, one observation that was made wa
 <p align='center'>
   <figure>
     <img width="800" src="./media/trick1.png" alt="IMU drift">
-    <figcaption align='center'>Trick 1: Interection of plane and a sphere</figcaption>
+    <figcaption align='center'>Trick 1: Assme fixed height (Interection of plane and a sphere)</figcaption>
   </figure>
 </p>
 
 ### Trick Two
-The next idea was to reduce the possible locations of the intersection of two circles from the two anchors and plane assumption we made. One initial idea was if we know the initial location, you can make assumtions about which of the two possible solutions in the intersects that the user could be based on as the user is moving taking the closer solution assuming the user cannot just jump around between readings. Though this may work, if the two intersections are close and the controller gets off then the estimation would become very off. The final idea was if we are assuming we are in a rectangular room and place on tag in the corner and another along on of the neighboring walls, we can sufficiently cut off the solutions of the circle intersects of the room down to one possible loation. This is because the part of 
+The next idea was to reduce the possible locations of the intersection of two circles from the two anchors and plane assumption we made. One initial idea was if we know the initial location, you can make assumtions about which of the two possible solutions in the intersects that the user could be based on as the user is moving taking the closer solution assuming the user cannot just jump around between readings. Though this may work, if the two intersections are close and the controller gets off then the estimation would become very off. The final idea was to strategically plave the anchors. If we are assume we are in a rectangular room and place on tag in the corner and another along on of the neighboring walls, we cut off the solutions of the circle intersects of the room down to one possible loation due to the 3/4 removal of the circle for the ancor placed in the corner and the 1/2 removal of the circle for the anchor placed along the wall. This geometry reduction allows us to have only one point in the room where the user could be based on two tag readings. 
+
+<p align='center'>
+  <figure>
+    <img width="800" src="./media/trick1.png" alt="IMU drift">
+    <figcaption align='center'>Trick 2: Strategic Anchor placement (Room circle intersects)</figcaption>
+  </figure>
+</p>
+
 
 # UWB Position Estimation Evaluation
 In oder to get accurate antennas readings for the UWB, each anchor antenna had to be tuned. Since the distance cacluclation includes both ToF and internal anchor delays, the anchor delay for each antenna had to be tested. To do this, the anchor antennas were pinned at known distance locations and the relative time/distance calculations were made based off assumptions of various  offsets, and then the delay was calculated by integrating the errors for each offset. After tuning the antennas, the UWB measurements were still noisy and inconsistantly reading within the  specified +/- 30cm accuracy of the devices. To reduce the noise, a 10 sample 10Hz moving average filter was applied and UWB measurements were then able to fall within the specified accuracies.
 # Line of Sight Object Detection
 
+To detect where a user was intending to point the position estimation and the orientation estimation were used. If all poisitions of the smart devices are know, then by knowing position and orientation of the controller we can imagine a line coming out of the top of the controller. To determine which object the user is intending to select, we designed a viretual 1 m sphere circumference where if the line corssed any where in that sphere it would be considered to be detected and pointed at. If there was multiple intersection, than to distinguish which item the user is pointing at, the closest distance from the line to the center point of the object was calculated, and which ever object was closer would be "selected" and could be controlled by the device.
+
 
 # GUI 
 
+
+To allow for visual represenation of the position, orentation, and object selection a python interfaced GUI was created. This GUI displays how the controller is estimated to poistioned in cluding direction it is pointing in the room and the tilt of the controller, along with the estimated x and y positions in the room. It also displayes the dimensions of the room, renders the objects in the room (with configureable click placement), and finally the pbject it believes to be pointing at to be controlled in the bottom right corner.
+
+#James insert Orientation video here!!!!!!!!!!!!!!!!
+
+
+When an object pointed at and the button on the controller is clicked an illustration highlights the line of sight of the controller along with the device that was chosen. For proff of concept only smart lights were actaully controllable and would toggle upon button selection if chosen
+
 <p align='center'>
   <figure>
-    <img width="800" src="./media/gui.png" alt="IMU drift">
-    <figcaption align='center'>Stationary Test Accelerometer Position Estimation over 3 minutes</figcaption>
+    <img width="800" src="./media/gui.PNG" alt="gui">
+    <figcaption align='center'>Image of GUI with </figcaption>
   </figure>
 </p>
+
+##Insert videos depicting controller use here
 # 5. Discussion and Conclusions
 
 With the 2 UWB anchor approach, the system was successfully able to select and control multiple smart devices in the room.
@@ -191,6 +211,5 @@ Overall, we were satisfied with the ability of the system to detect smart device
 
 ## Project Links
 * [Proposal](proposal)
-* [Midterm Checkpoint Presentation Slides](http://)
 * [Final Presentation Slides](https://docs.google.com/presentation/d/1ARPfKs8R3b8PLh7hjExXQs66cmnulIzx0FZq7Vi8yAQ/edit?usp=sharing)
-* [Final Report](report)
+* [Github Repo](https://github.com/SimonSchirber/Ultra-Wide-Band-M202)
