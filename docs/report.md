@@ -100,16 +100,34 @@ To obtain a pose estimation, the goal of the project was to use the orientation 
   <img width="800" src="./media/rotation.png" alt="Rotation of Raw Accelerometer Values to get true Ax, Ay, Az values">
 </p>
 
-By using the above translated accelerations, you can integrate acceleration to get velocity, and integrate velocity to get position. The biggest limiting factor with this approach is that the acceleromter is prone to drift and since position is a result of a double integrtaion, accumulation of positional error can be accumulated. The second method that was initially intended to be used to estimate positionwas using one UWB anchor and tag, where the initial anchor position in the room was known. By having ine tag in the room and getting a distance measurment from the UWB. there is essentially a sphere of possible positions that the tag could be in realtion to the anchor. The idea was that over time if we combined both positional observation from the acceleration and distance observations from the UWB anchor, the locations where are user is could be to see these observations overtime could mean the user was only in one spot.
+By using the above translated accelerations, you can integrate acceleration to get velocity, and integrate velocity to get position. The biggest limiting factor with this approach is that the acceleromter is prone to drift and since position is a result of a double integrtaion, accumulation of positional error can be accumulated. The second method that was initially intended to be used to estimate positionwas using one UWB anchor and tag, where the initial anchor position in the room was known. By having ine tag in the room and getting a distance measurment from the UWB. there is essentially a sphere of possible positions that the tag could be in realtion to the anchor. The idea was that over time if we combined both positional observation from the acceleration and distance observations from the UWB anchor, the possible locations where a user is could be and have the sensor observations overtime reduce a user to one possible spot.
 
 # 4. Evaluation and Results
 
+# Accelerometer Position Estimation Evaluation
+
+To test the accuracies of accelerometer readings, a stationary IMU test was performed. This test involved placing the designed controller flat on a surface and averaging the 30 samples of the stationary controller to get acceleration offsets. Once offsets were calculated, the sampling began where the controller would read the accelerometer readings minus the offsets. In a perfect world, the readings would show zero acceleration, however as expected there was drift. When the accelerations were integrated into velocity, and the velocities were integrated into position, the stationary test showed that soley relying on the acceleration data would have predicted 30m error in the x position, 600m off in the y position, and 40m off in the z direction. 
+
+# IMU Orientation Estimation Evaluation
+
+To test the accuracies of the Alpha, Beta, and Gamma values provided by the IMU fusion sensor, a stationary angle test was performed for reach respective angle. For each test, the user would move around the controller for five seconds, then place the controller at the repective angle stationary for 5 seconds before an angle sample was taken. 
+
+<p align='center'>
+  <figure>
+    <img width="800" src="./media/IMU_drift.png" alt="IMU drift">
+    <figcaption>Stationary Test Accelearometer Position Estimation over 3 minutes</figcaption>
+  </figure>
+</p>
 
 # Updated Postion approach
 ### Trick One
 
+
+
 ### Trick Two
 
+# UWB Evaluation
+In oder to get accurate antennas readings for the UWB, each anchor antenna had to be tuned. Since the distance cacluclation includes both ToF and internal anchor delays, the anchor delay for each antenna had to be tested. To do this, the anchor antennas were pinned at known distance locations and the relative time/distance calculations were made based off assumptions of various  offsets, and then the delay was calculated by integrating the errors for each offset. After tuning the antennas, the UWB measurements were still noisy and inconsistantly reading within the  specified +/- 30cm accuracy of the devices. To reduce the noise, a 10 sample 10Hz moving average filter was applied and UWB measurements were then able to fall within the specified accuracies.
 # Line of Sight Object Detection
 
 # 5. Discussion and Conclusions
