@@ -30,7 +30,7 @@ Most localization techniques used today include GPS, bluetooth, or Wi-fi ranging
 # Novelty, Rationale, and Impact: 
 
 This project is novel because it present a feasable method for intuitively managing smart devices, and provides a novel approach localization techniques using UWB and IMU data that could stretch beyond the intended use case. 
-
+JAMes Note:This was 3 sections combined into one, I dont know what else to add to this
 # Challenges: 
 - using as few UWB anchors as possible while still providing accurate location data
 - succesfully proceesing IMU data to understand movements of humans while being able to filter out drift
@@ -46,7 +46,7 @@ This project is novel because it present a feasable method for intuitively manag
 # Metrics of Success: 
 - Positional Accuracy (x, y, z)
 - Orientation Accuracy (Alpha, Beta, Gamma)
-- Cost requirements/sensors needed to perform localization
+- Cost and number of sensors needed to perform localization
 - Ability of controller to distinguish between multiple objects in a room
 
 
@@ -97,26 +97,32 @@ This hardware was then put together on a breadboard which had a push button and 
 ## Sensor Fusion Approach
 
 <p align='center'>
-  <img width="800" src="./media/Pose_estimation.png" alt="Orientation and Pose Estimation">
+  <figure>
+    <img width="800" src="./media/Pose_estimation.png" alt="IMU drift">
+    <figcaption align='center'>Fused Methods to Detect Orientation and Pose</figcaption>
+  </figure>
 </p>
 
 To achieve accurate detection of where a user is pointing a controller in free space, the two measurements that are needed are orientation estimation (Alpha, Beta, Gamma), and pose estimation (x, y, z). 
 
-To obtain an oreintation estimation the 9 axis IMU was used. There are two ways that a 9 axis IMU can detect orientation.The first method is by sensing where the magnetic fields point with the magnetometer and where gravity acceleration is pointing with the accelerometer, and then finding the cross product of theses two vectors we can get orientation. The second method is if we know the original orientation and the gyroscope is working perfectly, the angular rotation multiplied by time will tell us the orientation of an object. The IMU and built in Arm Cortex M0 microprocessor in the BN055 provide cutom software to fuse these two estimation together relying partially on measurments from each to make a fused orientation estimate which can be update at 100Hz.  
+To obtain an oreintation estimation the 9 axis IMU was used. There are two ways that a 9 axis IMU can detect orientation. The first method is by sensing where the magnetic fields point with the magnetometer and where gravity acceleration is pointing with the accelerometer, and by taking the cross product of theses two vectors we can get orientation. The second method is if we know the original orientation and the gyroscope is working perfectly, the angular rotation multiplied by time will tell us the orientation of an object. The BN055 IMU and built in Arm Cortex M0 microprocessor provides cutom software to fuse these two estimations together to make a fused orientation estimate which can be update at 100Hz.  
 
-To obtain a pose estimation, the goal of the project was to use the orientation estimation and fuse it with IMU and UWB measurements to get X, Y an Z cordinates. In theory there are two methods to get position with this approach. The first is if you relative know orientation of the controller to the room you are in, you can perform a tranformational rotation on the Acceleration sensors to get relative x, y, and z positional accelerations.
+To obtain a pose estimation, the goal of the project was to use the orientation estimation and fuse it with IMU and UWB measurements to get X, Y an Z cordinates. In theory there are two methods to get position with this approach. The first is if you know relative orientation of the controller to the room you are in, you can perform a tranformational rotation on the acceleration sensors to get relative x, y, and z positional accelerations.
 
 <p align='center'>
-  <img width="800" src="./media/rotation.png" alt="Rotation of Raw Accelerometer Values to get true Ax, Ay, Az values">
+  <figure>
+    <img width="800" src="./media/rotation.png" alt="IMU drift">
+    <figcaption align='center'>Arduino Rotation Matrix Calculation</figcaption>
+  </figure>
 </p>
 
-By using the above translated accelerations, you can integrate acceleration to get velocity, and integrate velocity to get position. The biggest limiting factor with this approach is that the acceleromter is prone to drift and since position is a result of a double integrtaion, accumulation of positional error can be accumulated. The second method that was initially intended to be used to estimate positionwas using one UWB anchor and tag, where the initial anchor position in the room was known. By having ine tag in the room and getting a distance measurment from the UWB. there is essentially a sphere of possible positions that the tag could be in realtion to the anchor. The idea was that over time if we combined both positional observation from the acceleration and distance observations from the UWB anchor, the possible locations where a user is could be and have the sensor observations overtime reduce a user to one possible spot.
+By using the above translated accelerations, you can integrate acceleration to get velocity, and integrate velocity to get position. The biggest limiting factor with this approach is that the acceleromter is prone to drift and since position is a result of a double integrataion, positional error can be accumulated over time. The second method that was initially used to estimate position was using one UWB anchor and tag, where the initial anchor position in the room was known. By having one tag in the room and getting a distance measurment from the UWB, the anchor creates a sphere of possible positions that the tag could be in relation to the anchor. The idea was that over time if we combined both positional observation from the acceleration and distance observations from the UWB anchor, the possible locations where a user is could be reduced overtime be able to conclude the user could only be in one possible spot.
 
 # 4. Evaluation and Results
 
 # Accelerometer Position Estimation Evaluation
 
-To test the accuracies of accelerometer readings, a stationary IMU test was performed. This test involved placing the designed controller flat on a surface and averaging the 30 samples of the stationary controller to get acceleration offsets. Once offsets were calculated, the sampling began where the controller would read the accelerometer readings minus the offsets. In a perfect world, the readings would show zero acceleration, however as expected there was drift. When the accelerations were integrated into velocity, and the velocities were integrated into position, the stationary test showed that soley relying on the acceleration data would have predicted 30m error in the x position, 600m off in the y position, and 40m off in the z direction. 
+To test the accuracies of accelerometer readings, a stationary IMU test was performed. This test involved placing the designed controller flat on a surface and averaging the first 30 samples of the stationary controller to get acceleration offsets. Once offsets were calculated, the sampling began where the controller would read the accelerometer readings minus the offsets. In a perfect world, the readings would show zero acceleration, however as expected there was drift. When the accelerations were integrated into velocity, and the velocities were integrated into position, the stationary test showed that soley relying on the acceleration data would have predicted 30m error in the x position, 600m off in the y position, and 40m off in the z direction. 
 
 <p align='center'>
   <figure>
@@ -127,7 +133,7 @@ To test the accuracies of accelerometer readings, a stationary IMU test was perf
 
 # IMU Orientation Estimation Evaluation
 
-To test the accuracies of the Alpha, Beta, and Gamma values provided by the IMU fusion sensor, a stationary angle test was performed for reach respective angle. For each test, the user would move around the controller for five seconds, then place the controller at the repective angle stationary for 5 seconds before an angle sample was taken. In total, 6 Alpha angles (0-360°), 9 Beta angles (-90, 90°), and 7 Gamma angles (-180, 180°) were tested, with ten samples tested per angle. The respective mean errors were calculated to be +/-37.27° for Alpha, +/-5.97° for Beta, and +/-4.26° for Gamma. One significant observation is that the angle that has the most significant error (Alpha) is also the angle that is likely most impotant when diferentiating objects in the room as it governs both the x and y pointing position for a line of sight when pointing in a room.
+To test the accuracies of the Alpha, Beta, and Gamma values provided by the IMU fusion sensor, a stationary angle test was performed for each respective angle. For each test, the user would move around the controller for five seconds, then place the controller at the repective angle stationary for 5 seconds before an angle sample was taken. In total, 6 Alpha angles (0-360°), 9 Beta angles (-90, 90°), and 7 Gamma angles (-180, 180°) were tested, with ten samples tested per angle. The respective mean errors were calculated to be +/-37.27° for Alpha, +/-5.97° for Beta, and +/-4.26° for Gamma. One significant observation is that the angle that has the most significant error (Alpha) is also the angle that is likely most impotant when diferentiating objects in the room as it governs both the x and y pointing position for a line of sight when pointing in a room. Though the Gamma angle orientation is not used for determing where the line of sight is pointing for the controller, it is important when translations on the raw accelerometer values are made to get position estimations.
 
 
 <p align='center'>
@@ -147,24 +153,26 @@ To test the accuracies of the Alpha, Beta, and Gamma values provided by the IMU 
 
 # Updated Postion approach
 
-After discovering the noise that was present on the accelerometers, the next decision that was made was to try and filter the accelerometer noise. A bandpass filter was added to the accelerometer with the high pass frequency meant to filter out the drift/consistant error that were read in the error from the transformations and the drift of the sensors and low pass meant to filter out the noise in the accelerometers. The first step was to see if we could get indications of the direction that the controller was moving in a point in time, assuming that the object was at zero velocity. We were able to get gerneral direction indiciations based on seeing accelerometer turning iniitially positive in one direction and the negative shortly after when the object deaccelerated. Anytime that this data was integrated however, the data would inconsistantly accumulate velocity values to the point where often times the velocity would indicate that object was moving quickly in the reverse direction. Additionally, when the controller was tested not moving parrallel to one of the accelerometer axis and transmations were applied to get direction, the error that was accumulated due to incorrect angle transformations with gravitational acceleration was so significant that it rendered any non parrallel axis movement useless for giving information about directional movements. It was decided that the nature of the accelerometer and its inaccuracies paired with tthe sensor inaccuracies in orientation estimation made it not ccapable of being used for for position estimation.
+After discovering the significant noise that was present on the accelerometers, the next approach was to try and filter the accelerometer noise. A bandpass filter was added to the accelerometer to filter the data of interest. Thr high pass frequency was meant to filter out the drift and errors that were caused by inaccuracies from the transformations/orintation estimations and the low pass filter meant to filter out the noise in the accelerometers. The first step was to see if we could get indications of the direction that the controller was moving in a point in time, assuming that the object was at zero velocity. We were able to get gerneral direction indiciations based on seeing accelerometer turning iniitially positive in one direction and the negative shortly after when the object deaccelerated. Anytime that this data was integrated however, the data would inconsistantly accumulate velocity values to the point where often times the velocity would indicate that object was moving quickly in the reverse direction. Additionally, when the controller was tested not moving parrallel to one of the accelerometer axis, the transformations that were applied to get direction had significant error that was accumulated. This was due to incorrect angle transformations and since gravitational acceleration was so significant it showed up in all directions and it rendered any non parrallel axis movement useless for giving information about directional movements. It was then decided that the nature of the accelerometer and its inaccuracies paired with the IMU sensor inaccuracies in orientation estimation made it not ccapable of being used for for position estimation.
 
-The next steps to achieve accurate position estimation without using IMU data was moving from one UWB anchor to two. Though two tags are not normally enough to calculate position in 3d space, two tricks were applied to estimate position.
+The next direction taken to achieve accurate position estimation without using IMU data was moving from one UWB anchor to two. Though two tags are not normally enough to calculate position in 3d space, two tricks were applied to estimate position.
 
 
 ### Trick One
 
-After holding the controller that was designed, one observation that was made was that most of the time twhen the controller was being used, it would be held at the samer height or close to it based on the user. If we make the assumption that the user will be using the controller at a similar Z plane height, this siginificantly reduces the possible of where the user could be located. Using some geometry we can see that the intersection of a plane (z plane height) and a sphere reduces potential location of a user from a sphere to a circle.
+After using the controller in a experiment setting, one observation was that most of the time when the controller was being used, it would be held at the same or similar heights by the user with the height being based on the user. If we make the assumption that the user will be using the controller at similar Z plane heights, this siginificantly reduces the possibity of where the user could be located. Using some geometry techniques we can see that the intersection of a plane (z plane height) and a sphere reduces potential location of a user from a sphere to a circle.
 
 <p align='center'>
   <figure>
     <img width="400" src="./media/trick1.png" alt="IMU drift">
-    <figcaption align='center'>Trick 1: Assme fixed height (Interection of plane and a sphere)</figcaption>
+    <figcaption align='center'>Trick 1: Assme user fixed height (Interection of plane and a sphere)</figcaption>
   </figure>
 </p>
 
 ### Trick Two
-The next idea was to reduce the possible locations of the intersection of two circles from the two anchors and plane assumption we made. One initial idea was if we know the initial location, you can make assumtions about which of the two possible solutions in the intersects that the user could be based on as the user is moving taking the closer solution assuming the user cannot just jump around between readings. Though this may work, if the two intersections are close and the controller gets off then the estimation would become very off. The final idea was to strategically plave the anchors. If we are assume we are in a rectangular room and place on tag in the corner and another along on of the neighboring walls, we cut off the solutions of the circle intersects of the room down to one possible loation due to the 3/4 removal of the circle for the ancor placed in the corner and the 1/2 removal of the circle for the anchor placed along the wall. This geometry reduction allows us to have only one point in the room where the user could be based on two tag readings. 
+The next idea was to reduce the possible locations of the intersection of two circles from after applying trick 1. One initial idea was if we know the initial location, you can make assumtions about which of the two possible solutions in the circle intersects that the user would be in based on the fact that the user cannot just jump around between readings and so taking the closer solution to the previous solution. Though this may work, if the two intersections are close and the controller gets off then the estimations would quickly become bery incorrect. 
+
+The final idea used was to strategically plave the anchors. If we are assume we are in a rectangular room and place on tag in the corner and another along on of the neighboring walls, we cut off the solutions of the circle intersects of the room down to one possible loation. This id due to fact that 3/4 of the circle is removed by the walls for the ancor placed in the corner and the 1/2 of the circle is removed by the walls for the anchor placed along the wall. This geometry reduction allows us to have only one point in the room where the user could be based on two tag readings. 
 
 <p align='center'>
   <figure>
@@ -175,21 +183,20 @@ The next idea was to reduce the possible locations of the intersection of two ci
 
 
 # UWB Position Estimation Evaluation
-In oder to get accurate antennas readings for the UWB, each anchor antenna had to be tuned. Since the distance cacluclation includes both ToF and internal anchor delays, the anchor delay for each antenna had to be tested. To do this, the anchor antennas were pinned at known distance locations and the relative time/distance calculations were made based off assumptions of various  offsets, and then the delay was calculated by integrating the errors for each offset. After tuning the antennas, the UWB measurements were still noisy and inconsistantly reading within the  specified +/- 30cm accuracy of the devices. To reduce the noise, a 10 sample 10Hz moving average filter was applied and UWB measurements were then able to fall within the specified accuracies.
+In oder to get accurate antennas readings for the UWB, each anchor antenna had to be tuned. Since the distance cacluclation includes both ToF and internal anchor delays, the anchor delay for each antenna had to be tested. To do this, the anchor antennas were placed at known distance locations and the relative time/distance calculations were made based off assumptions of various  offsets. The delay was calculated by integrating the errors for each offset. After tuning the antennas, the UWB measurements were still noisy and inconsistantly/not reading within the specified +/- 30cm accuracy of the devices. To reduce the noise, a 10 sample 10Hz moving average filter was applied and UWB measurements were then able to fall within the specified accuracies.
 # Line of Sight Object Detection
 
-To detect where a user was intending to point the position estimation and the orientation estimation were used. If all poisitions of the smart devices are know, then by knowing position and orientation of the controller we can imagine a line coming out of the top of the controller. To determine which object the user is intending to select, we designed a viretual 1 m sphere circumference where if the line corssed any where in that sphere it would be considered to be detected and pointed at. If there was multiple intersection, than to distinguish which item the user is pointing at, the closest distance from the line to the center point of the object was calculated, and which ever object was closer would be "selected" and could be controlled by the device.
+To detect where a user was intending to point, the position estimation and the orientation estimation were used. If all poisitions of the smart devices are known, then by knowing position and orientation of the controller we can imagine a line coming out of the top of the controller where the user is pointing. To determine which object the user is intending to select, we designed a virtual 1 m sphere radius where if the pointinh line crossed any where in that sphere it would be considered to be detected and pointed at. If there was multiple object intersections, than to distinguish which item the user is pointing at, the closest distance from the line to the center point of the object was calculated, and which ever object was closer would be "selected" and could be controlled by the device.
 
 
 # GUI 
 
-
-To allow for visual represenation of the position, orentation, and object selection a python interfaced GUI was created. This GUI displays how the controller is estimated to poistioned in cluding direction it is pointing in the room and the tilt of the controller, along with the estimated x and y positions in the room. It also displayes the dimensions of the room, renders the objects in the room (with configureable click placement), and finally the pbject it believes to be pointing at to be controlled in the bottom right corner.
+To allow for visual represenation of the position, orentation, and object selection of the device, a python GUI was created. This GUI displays how the controller is estimated to poistioned including the direction it is pointing (shown by the compass) and the tilt of the controller (shown by the tilt lines). It also renders the estimated user x and y positions in the room, the dimensions of the room, and displays the objects in the room (with configureable click placement). Finally, when an object is pointed at and the line of sight calculation detects selection,that object is rendered and can be controlled in the bottom right corner.
 
 #James insert Orientation video here!!!!!!!!!!!!!!!!
 
 
-When an object pointed at and the button on the controller is clicked an illustration highlights the line of sight of the controller along with the device that was chosen. For proff of concept only smart lights were actaully controllable and would toggle upon button selection if chosen
+When an object pointed at and the button on the controller is clicked, an illustration highlights the line of sight of the controller along with the device that was chosen. For proof of concept smart lights were added and would toggle upon button selection if chosen.
 
 <p align='center'>
   <figure>
