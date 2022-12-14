@@ -108,16 +108,25 @@ By using the above translated accelerations, you can integrate acceleration to g
 
 To test the accuracies of accelerometer readings, a stationary IMU test was performed. This test involved placing the designed controller flat on a surface and averaging the 30 samples of the stationary controller to get acceleration offsets. Once offsets were calculated, the sampling began where the controller would read the accelerometer readings minus the offsets. In a perfect world, the readings would show zero acceleration, however as expected there was drift. When the accelerations were integrated into velocity, and the velocities were integrated into position, the stationary test showed that soley relying on the acceleration data would have predicted 30m error in the x position, 600m off in the y position, and 40m off in the z direction. 
 
-# IMU Orientation Estimation Evaluation
-
-To test the accuracies of the Alpha, Beta, and Gamma values provided by the IMU fusion sensor, a stationary angle test was performed for reach respective angle. For each test, the user would move around the controller for five seconds, then place the controller at the repective angle stationary for 5 seconds before an angle sample was taken. In total, 6 Alpha angles (0-360), 9 Beta angles  
-
 <p align='center'>
   <figure>
     <img width="800" src="./media/IMU_drift.png" alt="IMU drift">
-    <figcaption>Stationary Test Accelearometer Position Estimation over 3 minutes</figcaption>
+    <figcaption align='center'>Stationary Test Accelerometer Position Estimation over 3 minutes</figcaption>
   </figure>
 </p>
+
+# IMU Orientation Estimation Evaluation
+
+To test the accuracies of the Alpha, Beta, and Gamma values provided by the IMU fusion sensor, a stationary angle test was performed for reach respective angle. For each test, the user would move around the controller for five seconds, then place the controller at the repective angle stationary for 5 seconds before an angle sample was taken. In total, 6 Alpha angles (0-360°), 9 Beta angles (-90, 90°), and 7 Gamma angles (-180, 180°) were tested, with ten samples tested per angle. The respective mean errors were calculated to be +/-37.27° for Alpha, +/-5.97° for Beta, and +/-4.26° for Gamma. One significant observation is that the angle that has the most significant error (Alpha) is also the angle that is likely most impotant when diferentiating objects in the room as it governs both the x and y pointing position for a line of sight when pointing in a room.
+
+
+<p align='center'>
+  <figure>
+    <img width="800" src="./media/Angle_Error.png" alt="IMU drift">
+    <figcaption align='center'>Average Angle Error for Alpha, Beta, Gamma angles</figcaption>
+  </figure>
+</p>
+
 
 # Updated Postion approach
 ### Trick One
@@ -126,7 +135,7 @@ To test the accuracies of the Alpha, Beta, and Gamma values provided by the IMU 
 
 ### Trick Two
 
-# UWB Evaluation
+# UWB Position Estimation Evaluation
 In oder to get accurate antennas readings for the UWB, each anchor antenna had to be tuned. Since the distance cacluclation includes both ToF and internal anchor delays, the anchor delay for each antenna had to be tested. To do this, the anchor antennas were pinned at known distance locations and the relative time/distance calculations were made based off assumptions of various  offsets, and then the delay was calculated by integrating the errors for each offset. After tuning the antennas, the UWB measurements were still noisy and inconsistantly reading within the  specified +/- 30cm accuracy of the devices. To reduce the noise, a 10 sample 10Hz moving average filter was applied and UWB measurements were then able to fall within the specified accuracies.
 # Line of Sight Object Detection
 
