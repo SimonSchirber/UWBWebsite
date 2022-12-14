@@ -70,11 +70,11 @@ This data is very impressive and lends some support to the feasibility of doing 
 - BN055 9-axis IMU
 - ESP32 Wrover
 - Qorvo DWM300 (1 Initiator, 1 Tag)
-![alt text](./docs/media/sensors.png?raw=True "User pointing phone for device recognition and control")
+![alt text](./media/sensors.png?raw=True "User pointing phone for device recognition and control")
 
 ## Sensor Fusion Approach
 
-![alt text](./docs/media/Pose_estimation.png?raw=True "Orientation and Pose Estimation")
+![alt text](./media/Pose_estimation.png?raw=True "Orientation and Pose Estimation")
 
 To achieve accurate detection of where a user is pointing a controller in free space, the two measurements that are needed are orientation estimation (Alpha, Beta, Gamma), and pose estimation (x, y, z). 
 
