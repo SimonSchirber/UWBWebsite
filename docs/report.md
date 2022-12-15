@@ -201,7 +201,7 @@ To allow for visual represenation of the position, orentation, and object select
 When an object pointed at and the button on the controller is clicked, an illustration highlights the line of sight of the controller along with the device that was chosen. For proof of concept smart lights were added and would toggle upon button selection if chosen.
 
 <p align='center'>
-  <figure>
+  <figure align='center'>
     <img align='center' width="800" src="./media/gui.PNG" alt="gui">
     <figcaption align='center'>Image of GUI with user selecting/controlling bluetooth speaker </figcaption>
   </figure>
@@ -211,20 +211,16 @@ When an object pointed at and the button on the controller is clicked, an illust
 
 <div align="center">
       <a href="[https://www.youtube.com/watch?v=5yLzZikS15k]">
-         <img src="./media/202_B_thumb.png" style="width:50%;">
+         <img src="./media/202_B_thumb.png" style="width:70%;">
       </a>
 </div>
 
 
 <div align="center">
       <a href="[https://www.youtube.com/watch?v=BKybWUbtDew]">
-         <img src="./media/202_E_thumb.png" style="width:50%;">
+         <img src="./media/202_E_thumb.png" style="width:70%;">
       </a>
 </div>
-
-[![Two_Smart_Light_Demo](./media/202_B_thumb.png)](https://youtu.be/DsVu9VUhcU8 "Two Smart Light Demo")
-
-[![Multi_Smart_Demo](./media/202_E_thumb.png)](https://www.youtube.com/watch?v=BKybWUbtDew "Several Smart Device Demo")
 
 
 # 5. Discussion and Conclusions
