@@ -88,21 +88,20 @@ This hardware was then put together on a breadboard which had a push button and 
 
 
 <p align='center'>
-  <figure>
-    <img width="200" src="./media/controller.png" alt="IMU drift">
-    <figcaption align='center'>UWB + IMU "smart Controller"</figcaption>
-  </figure>
+  <img width="200" src="./media/controller.png" alt="IMU drift">
+</p>
+<p align='center'>
+  UWB + IMU "smart Controller
 </p>
 
 
 ## Sensor Fusion Approach
 
 <p align='center'>
-  <figure>
-    <img width="800" src="./media/Pose_estimation.png" alt="IMU drift">
-    <figcaption align='center'>Methods to Detect Orientation and Pose Estimations</figcaption>
-  </figure>
+  <img width="800" src="./media/Pose_estimation.png" alt="IMU drift">
 </p>
+<p align='center'>
+  Methods to Detect Orientation and Pose Estimations
 
 To achieve accurate detection of where a user is pointing a controller in free space, the two measurements that are needed are orientation estimation (Alpha, Beta, Gamma), and pose estimation (x, y, z). 
 
@@ -111,10 +110,10 @@ To obtain an oreintation estimation the 9 axis IMU was used. There are two ways 
 To obtain a pose estimation, the goal of the project was to use the orientation estimation and fuse it with IMU and UWB measurements to get X, Y an Z cordinates. In theory there are two methods to get position with this approach. The first is if you know relative orientation of the controller to the room you are in, you can perform a tranformational rotation on the acceleration sensors to get relative x, y, and z positional accelerations.
 
 <p align='center'>
-  <figure>
-    <img width="800" src="./media/rotation.png" alt="IMU drift">
-    <figcaption align='center'>Arduino Rotation Matrix Calculation</figcaption>
-  </figure>
+  <img width="800" src="./media/rotation.png" alt="IMU drift">
+</p>
+<p align='center'>
+  Arduino Rotation Matrix Calculation
 </p>
 
 By using the above translated accelerations, you can integrate acceleration to get velocity, and integrate velocity to get position. The biggest limiting factor with this approach is that the acceleromter is prone to drift and since position is a result of a double integrataion, positional error can be accumulated over time. The second method that was initially used to estimate position was using one UWB anchor and tag, where the initial anchor position in the room was known. By having one tag in the room and getting a distance measurment from the UWB, the anchor creates a sphere of possible positions that the tag could be in relation to the anchor. The idea was that over time if we combined both positional observation from the acceleration and distance observations from the UWB anchor, the possible locations where a user is could be reduced overtime be able to conclude the user could only be in one possible spot.
@@ -126,10 +125,10 @@ By using the above translated accelerations, you can integrate acceleration to g
 To test the accuracies of accelerometer readings, a stationary IMU test was performed. This test involved placing the designed controller flat on a surface and averaging the first 30 samples of the stationary controller to get acceleration offsets. Once offsets were calculated, the sampling began where the controller would read the accelerometer readings minus the offsets. In a perfect world, the readings would show zero acceleration, however as expected there was drift. When the accelerations were integrated into velocity, and the velocities were integrated into position, the stationary test showed that soley relying on the acceleration data would have predicted 30m error in the x position, 600m off in the y position, and 40m off in the z direction. 
 
 <p align='center'>
-  <figure>
-    <img width="800" src="./media/IMU_drift.png" alt="IMU drift">
-    <figcaption align='center'>Stationary Test Accelerometer Position Estimation over 3 minutes</figcaption>
-  </figure>
+  <img width="800" src="./media/IMU_drift.png" alt="IMU drift">
+</p>
+<p align='center'>
+  Stationary Test Accelerometer Position Estimation over 3 minutes
 </p>
 
 # IMU Orientation Estimation Evaluation
@@ -138,17 +137,17 @@ To test the accuracies of the Alpha, Beta, and Gamma values provided by the IMU 
 
 
 <p align='center'>
-  <figure>
-    <img width="800" src="./media/angle_data.png" alt="IMU drift">
-    <figcaption align='center'>True Angle Versus Angle Estimation</figcaption>
-  </figure>
+  <img width="800" src="./media/angle_data.png" alt="IMU drift">
+</p>
+<p align='center'>
+  True Angle Versus Angle Estimation
 </p>
 
 <p align='center'>
-  <figure>
-    <img width="800" src="./media/Angle_Error.png" alt="IMU drift">
-    <figcaption align='center'>Average Angle Error for Alpha, Beta, Gamma angles</figcaption>
-  </figure>
+  <img width="800" src="./media/Angle_Error.png" alt="IMU drift">
+</p>
+<p align='center'>
+  Average Angle Error for Alpha, Beta, Gamma angles
 </p>
 
 
@@ -164,10 +163,10 @@ The next direction taken to achieve accurate position estimation without using I
 After using the controller in a experiment setting, one observation was that most of the time when the controller was being used, it would be held at the same or similar heights by the user with the height being based on the user. If we make the assumption that the user will be using the controller at similar Z plane heights, this siginificantly reduces the possibity of where the user could be located. Using some geometry techniques we can see that the intersection of a plane (z plane height) and a sphere reduces potential location of a user from a sphere to a circle.
 
 <p align='center'>
-  <figure>
-    <img width="400" src="./media/trick1.png" alt="IMU drift">
-    <figcaption align='center'>Trick 1: Assme user fixed height (Interection of plane and a sphere)</figcaption>
-  </figure>
+  <img width="400" src="./media/trick1.png" alt="IMU drift">
+</p>
+<p align='center'>
+  Trick 1: Assme user fixed height (Interection of plane and a sphere)
 </p>
 
 
@@ -177,10 +176,10 @@ The next idea was to reduce the possible locations of the intersection of two ci
 The final idea used was to strategically plave the anchors. If we are assume we are in a rectangular room and place on tag in the corner and another along on of the neighboring walls, we cut off the solutions of the circle intersects of the room down to one possible loation. This id due to fact that 3/4 of the circle is removed by the walls for the ancor placed in the corner and the 1/2 of the circle is removed by the walls for the anchor placed along the wall. This geometry reduction allows us to have only one point in the room where the user could be based on two tag readings. 
 
 <p align='center'>
-  <figure>
-    <img width="400" src="./media/trick2.png" alt="IMU drift">
-    <figcaption align='center'>Trick 2: Strategic Anchor placement (Room circle intersects)</figcaption>
-  </figure>
+  <img width="400" src="./media/trick2.png" alt="IMU drift">
+</p>
+<p align='center'>
+  Trick 2: Strategic Anchor placement (Room circle intersects)
 </p>
 
 
@@ -203,7 +202,6 @@ When an object pointed at and the button on the controller is clicked, an illust
 <p align='center'>
   <img src="./media/gui.PNG" alt="gui" style="width:70%;">
 </p>
-
 <p align='center'>
   Image of GUI with user selecting/controlling bluetooth speaker
 </p>
