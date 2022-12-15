@@ -254,7 +254,7 @@ The following videos show the GUI inaction. Video 1 gives a demonstration of the
 
 # 5. Discussion and Conclusions
 
-With the two UWB anchor approach, the system was successfully able to select and control multiple smart devices in the room.
+With the two UWB anchor approach, the system was successfully able to select and control multiple smart devices in the room. The video demostrations capture the capability of the system to perform both pose and orientation estimation in order to select and control multiple smart devices in close proximity.
 
 In order to achieve the original goal of creating a system that uses only one UWB anchor and the IMU sensor data more assumptions would need to made. The data shows that with no limit on the position of the IMU sensor on a human subject, there is far too much noise to draw any conclusions about the displacement at any given time. It is possible that some sophisticated denoising algorithm or deep learning approach would have allowed us to find some significance to the IMU data. However, problem of localizing with a freely moving IMU sensor by itself is a research topic of its own.
 
