@@ -208,6 +208,10 @@ When an object pointed at and the button on the controller is clicked, an illust
 </p>
 
 ##Insert videos depicting controller use here
+
+[![Everything Is AWESOME](https://img.youtube.com/vi/StTqXEQ2l-Y/0.jpg)](https://www.youtube.com/watch?v=StTqXEQ2l-Y "Everything Is AWESOME")
+
+
 # 5. Discussion and Conclusions
 
 With the 2 UWB anchor approach, the system was successfully able to select and control multiple smart devices in the room.
