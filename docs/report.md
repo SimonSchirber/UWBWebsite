@@ -188,7 +188,7 @@ After using the controller in a experimental setting, one observation was that m
 
 
 ### Trick Two
-The next idea was to reduce the possible locations of the intersection of two circles from after applying trick 1. One initial idea was if we know the initial location, you can make assumtions about which of the two possible solutions in the circle intersects that the user would be in based on the fact that the user cannot just jump around between readings and so taking the closer solution to the previous solution. Though this may work, if the two intersections are close and the controller gets off then the estimations would quickly become bery incorrect. 
+The next idea was to reduce the possible locations of the intersection of two circles from after applying trick 1. One initial idea was if we know the initial location, you can make assumtions about which of the two possible solutions in the circle intersects that the user would be in based on the fact that the user cannot just jump around between readings and so taking the closer solution to the previous solution. Though this may work, if the two intersections are close and the controller gets off then the estimations would quickly become very incorrect. 
 
 The final idea used was to strategically place the anchors. If we are assume we are in a rectangular room and place on tag in the corner and another along on of the neighboring walls, we cut off the solutions of the circle intersects of the room down to one possible loation. This is due to fact that 3/4 of the circle is removed by the walls for the ancor placed in the corner and the 1/2 of the circle is removed by the walls for the anchor placed along the wall. This geometry reduction allows us to have only one point in the room where the user could be based on two tag readings. 
 
@@ -201,7 +201,8 @@ The final idea used was to strategically place the anchors. If we are assume we 
 
 
 # UWB Position Estimation Evaluation
-In oder to get accurate antennas readings for the UWB, each anchor antenna had to be tuned. Since the distance cacluclation includes both ToF and internal anchor delays, the anchor delay for each antenna had to be tested. To do this, the anchor antennas were placed at known distance locations and the relative time/distance calculations were made based off assumptions of various  offsets. The delay was calculated by integrating the errors for each offset. After tuning the antennas, the UWB measurements were still noisy and inconsistantly/not reading within the specified +/- 30cm accuracy of the devices. To reduce the noise, a 10 sample 10Hz moving average filter was applied and UWB measurements were then able to fall within the specified accuracies.
+In order to get accurate antennas readings for the UWB, each anchor antenna had to be tuned. Since the distance calculation includes both ToF and internal anchor delays, the anchor delay for each antenna had to be tested. To do this, the anchor antennas were placed at known distance locations and the relative time/distance calculations were made based off assumptions of various  offsets. The delay was calculated by integrating the errors for each offset. After tuning the antennas, the UWB measurements were still noisy and inconsistantly/not reading within the specified +/- 30cm accuracy of the devices. To reduce the noise, a 10 sample 10Hz moving average filter was applied and UWB measurements were then able to fall within the specified accuracies.
+
 # Line of Sight Object Detection
 
 To detect where a user was intending to point, the position estimation and the orientation estimation were used. If all poisitions of the smart devices are known, then by knowing position and orientation of the controller we can imagine a line coming out of the top of the controller where the user is pointing. To determine which object the user is intending to select, we designed a virtual 1 m sphere radius where if the pointinh line crossed any where in that sphere it would be considered to be detected and pointed at. If there was multiple object intersections, than to distinguish which item the user is pointing at, the closest distance from the line to the center point of the object was calculated, and which ever object was closer would be "selected" and could be controlled by the device.
@@ -211,6 +212,17 @@ To detect where a user was intending to point, the position estimation and the o
 
 To allow for visual represenation of the position, orentation, and object selection of the device, a python GUI was created. This GUI displays how the controller is estimated to poistioned including the direction it is pointing (shown by the compass) and the tilt of the controller (shown by the tilt lines). It also renders the estimated user x and y positions in the room, the dimensions of the room, and displays the objects in the room (with configureable click placement). Finally, when an object is pointed at and the line of sight calculation detects selection,that object is rendered and can be controlled in the bottom right corner.
 
+<p align='center'>
+  <img src="./media/gui.PNG" alt="gui" style="width:70%;">
+</p>
+<p align='center'>
+  Figure 14: Image of GUI with user selecting/controlling bluetooth speaker
+</p>
+
+When an object pointed at and the button on the controller is clicked, an illustration highlights the line of sight of the controller along with the device that was chosen. For proof of concept smart lights were added and would toggle upon button selection if chosen.
+
+The following videos show the GUI inaction. Video 1 gives a demonstration of the IMU magnetometer senssing to show the response time and give a general idea of the accuracy. Video 2 shows a demonstration with two smart lights placed in a room. When moving around the room, each light could be selected indepently to wirelessly toggle between on and off. Video 3 shows a similar demonstration however there are additional dummy smart devices placed in the room. These dummy smart devices allow us to show the ability of the system to distinguish between devices that are behind one another or very close to each other.
+
 <div align="center">
   <a href="[https://www.youtube.com/watch?v=kZUTw9wRUHE]">
      <img src="./media/magnetometer_thumb.png" style="width:70%;">
@@ -218,16 +230,6 @@ To allow for visual represenation of the position, orentation, and object select
 </div>
 <p align='center'>
   Video 1: Magnetometer Demo
-</p>
-
-
-When an object pointed at and the button on the controller is clicked, an illustration highlights the line of sight of the controller along with the device that was chosen. For proof of concept smart lights were added and would toggle upon button selection if chosen.
-
-<p align='center'>
-  <img src="./media/gui.PNG" alt="gui" style="width:70%;">
-</p>
-<p align='center'>
-  Figure 14: Image of GUI with user selecting/controlling bluetooth speaker
 </p>
 
 <div align="center">
@@ -252,7 +254,7 @@ When an object pointed at and the button on the controller is clicked, an illust
 
 # 5. Discussion and Conclusions
 
-With the 2 UWB anchor approach, the system was successfully able to select and control multiple smart devices in the room.
+With the two UWB anchor approach, the system was successfully able to select and control multiple smart devices in the room.
 
 In order to achieve the original goal of creating a system that uses only one UWB anchor and the IMU sensor data more assumptions would need to made. The data shows that with no limit on the position of the IMU sensor on a human subject, there is far too much noise to draw any conclusions about the displacement at any given time. It is possible that some sophisticated denoising algorithm or deep learning approach would have allowed us to find some significance to the IMU data. However, problem of localizing with a freely moving IMU sensor by itself is a research topic of its own.
 
