@@ -194,7 +194,11 @@ To detect where a user was intending to point, the position estimation and the o
 
 To allow for visual represenation of the position, orentation, and object selection of the device, a python GUI was created. This GUI displays how the controller is estimated to poistioned including the direction it is pointing (shown by the compass) and the tilt of the controller (shown by the tilt lines). It also renders the estimated user x and y positions in the room, the dimensions of the room, and displays the objects in the room (with configureable click placement). Finally, when an object is pointed at and the line of sight calculation detects selection,that object is rendered and can be controlled in the bottom right corner.
 
-#James insert Orientation video here!!!!!!!!!!!!!!!!
+<div align="center">
+      <a href="[https://www.youtube.com/watch?v=kZUTw9wRUHE]">
+         <img src="./media/magnetometer_thumb.png" style="width:70%;">
+      </a>
+</div>
 
 
 When an object pointed at and the button on the controller is clicked, an illustration highlights the line of sight of the controller along with the device that was chosen. For proof of concept smart lights were added and would toggle upon button selection if chosen.
