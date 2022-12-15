@@ -211,7 +211,7 @@ When an object pointed at and the button on the controller is clicked, an illust
 
 <div align="left">
       <a href="[https://www.youtube.com/watch?v=5yLzZikS15k](https://youtu.be/DsVu9VUhcU8)">
-         <img src="./media/202_B_thumb.png" style="width:100%;">
+         <img src="./media/202_B_thumb.png" style="width:50%;">
       </a>
 </div>
 
