@@ -24,7 +24,7 @@ As the number of smart devices in a household continues to grow there is need fo
 
 ## Motivation & Objective
 
-Current estimates expect the number of IoT devices to hit 30 Billion by 2025 with continous exponential growth[1]. With the growth of avaiable devices, the number of smart devices that each user has to manage also continues to grow. This increase in devices per user, makes it continuously harder for users to manage and control their devices in an intuitive way. The goal of the project is to create a localization and orientation technique for detecting and controlling smart device objects in a room via pointer control using only the sensors available in smartphones today. The project aims at accomplishing this with the least amount of additional sensors as possible.
+Current estimates expect the number of IoT devices to hit 30 Billion by 2025 with continous exponential growth [1]. With the growth of avaiable devices, the number of smart devices that each user has to manage also continues to grow. This increase in devices per user, makes it continuously harder for users to manage and control their devices in an intuitive way. The goal of the project is to create a localization and orientation technique for detecting and controlling smart device objects in a room via pointer control using only the sensors available in smartphones today. The project aims at accomplishing this with the least amount of additional sensors as possible.
  
 ## Todays Limitations
 
@@ -63,7 +63,7 @@ In a paper by Zwirello et al. [CITE] indoor localization using UWB is done by ri
   <img width="400" src="./media/UWB_range.png" alt="UWB Anchor Positioning Example">
 </p>
 <p align='center'>
-  Figure 2: Example UWB anchor scheme [CITE]
+  Figure 2: Example UWB anchor scheme [2]
 </p>
 
 The goal of this group was to find and optimal positioning algorithm that could use many anchors to find very precise location. For systems using few UWB anchors they found that the optimal approach is to simple estimate the location of the tag as somewhere on the surface of a sphere centered at each anchor with a radius equal to the range measurment. For a 3-D space, 4 anchors are need to pinpoint the location of a tag to one point. As this project uses a maximum of 2 anchors, the best estimate is somewhere on a circle that is the intersection of 2 spheres. A representation of this intersection is shown in the figure below.
@@ -72,17 +72,17 @@ The goal of this group was to find and optimal positioning algorithm that could 
   <img width="400" src="./media/sphere_intersect.png" alt="Intersection of 2 Spheres">
 </p>
 <p align='center'>
-  Figure 3: Intersection of two spheres [CITE]
+  Figure 3: Intersection of two spheres [2]
 </p>
 
 IMU Indoor Localization
 In a paper by Ibrahim et al. [CITE] indoor localization was achieved using a 9-DOF IMU sensor and a barometric pressure sensor. The basis of the system was to find the derivative of the acceleration to obtain the jerk and then take the triple integration to determine displacement. This is done in an attempt to reduce the effects of sensor drift on the overall measurements. The pressure measurement was used to estimate the height by making assumptions about how atmospheric pressure decreases as height increases. They then passed these measurements through a Kalman filter to find the displacement estimates and were able to track a walk through a multi-story building withing 3% error. The graph of this experiment is shown in the figure below.
 
 <p align='center'>
-  <img width="400" src="./media/IMU_experiment.png" alt="IMU Localization Experimetnt [CITE]">
+  <img width="400" src="./media/IMU_experiment.png" alt="IMU Localization Experimetnt [3]">
 </p>
 <p align='center'>
-  Figure 4: Graph of IMU localization experiment [CITE]
+  Figure 4: Graph of IMU localization experiment [3]
 </p>
 
 This data is very impressive and lends some support to the feasibility of doing human localiztion with IMU data but it relied on several crucial assumptions. The assumptions made by this group was that the subject have the IMU sensor attached at the belt and that the subject always be moving forward. For this project, the user must be allowed to wave their smartphone around the room to point at smart devices and so the assumption of having the IMU be fixed on the body was simply not feasible. Allowing the user to wave the smartphone around introduces far too much noise in the reading the come up with any useful data to predict position from the IMU data.
@@ -249,7 +249,7 @@ When an object pointed at and the button on the controller is clicked, an illust
   </a>
 </div>
 <p align='center'>
-  Video 3: ### Smart Device Demo
+  Video 3: 5 Smart Device Demo
 </p>
 
 
@@ -263,7 +263,7 @@ Overall, we were satisfied with the ability of the system to detect smart device
 
 # 6. References
 
-[1] https://explodingtopics.com/blog/iot-stats
+[1] Howarth, Josh. “80+ Amazing Iot Statistics (2023-2030).” Exploding Topics, Exploding Topics, 28 Nov. 2022, https://explodingtopics.com/blog/iot-stats. 
 
 [2] Ibrahim, Magdy, and Osama Moselhi. “IMU-Based Indoor Localization for Construction Applications.” Proceedings of the International Symposium on Automation and Robotics in Construction (IAARC), 2015, https://doi.org/10.22260/isarc2015/0059.
 
