@@ -202,7 +202,7 @@ When an object pointed at and the button on the controller is clicked, an illust
 
 
 <figure align='center'>
-  <img src="./media/gui.PNG" alt="gui">
+  <img src="./media/gui.PNG" alt="gui" style="width:70%;">
   <figcaption>Image of GUI with user selecting/controlling bluetooth speaker </figcaption>
 </figure>
 
