@@ -17,7 +17,7 @@ As the number of smart devices in a household continues to grow there is need fo
   <img width="200" src="./media/phone.png" alt="User pointing phone for device recognition and control">
 </p>
 <p align='center'>
-  Smartphone controllign smart devices
+  Figure 1: Smartphone controlling smart devices
 </p>
 
 # 1. Introduction
@@ -63,7 +63,7 @@ In a paper by Zwirello et al. [CITE] indoor localization using UWB is done by ri
   <img width="400" src="./media/UWB_range.png" alt="UWB Anchor Positioning Example">
 </p>
 <p align='center'>
-  Example UWB anchor scheme [CITE]
+  Figure 2: Example UWB anchor scheme [CITE]
 </p>
 
 The goal of this group was to find and optimal positioning algorithm that could use many anchors to find very precise location. For systems using few UWB anchors they found that the optimal approach is to simple estimate the location of the tag as somewhere on the surface of a sphere centered at each anchor with a radius equal to the range measurment. For a 3-D space, 4 anchors are need to pinpoint the location of a tag to one point. As this project uses a maximum of 2 anchors, the best estimate is somewhere on a circle that is the intersection of 2 spheres. A representation of this intersection is shown in the figure below.
@@ -72,7 +72,7 @@ The goal of this group was to find and optimal positioning algorithm that could 
   <img width="400" src="./media/sphere_intersect.png" alt="Intersection of 2 Spheres">
 </p>
 <p align='center'>
-  Intersection of two spheres [CITE]
+  Figure 3: Intersection of two spheres [CITE]
 </p>
 
 IMU Indoor Localization
@@ -82,7 +82,7 @@ In a paper by Ibrahim et al. [CITE] indoor localization was achieved using a 9-D
   <img width="400" src="./media/IMU_experiment.png" alt="IMU Localization Experimetnt [CITE]">
 </p>
 <p align='center'>
-  Graph of IMU localization experiment [CITE]
+  Figure 4: Graph of IMU localization experiment [CITE]
 </p>
 
 This data is very impressive and lends some support to the feasibility of doing human localiztion with IMU data but it relied on several crucial assumptions. The assumptions made by this group was that the subject have the IMU sensor attached at the belt and that the subject always be moving forward. For this project, the user must be allowed to wave their smartphone around the room to point at smart devices and so the assumption of having the IMU be fixed on the body was simply not feasible. Allowing the user to wave the smartphone around introduces far too much noise in the reading the come up with any useful data to predict position from the IMU data.
@@ -94,7 +94,7 @@ This data is very impressive and lends some support to the feasibility of doing 
   <img width="400" src="./media/Sensors.png" alt="User pointing phone for device recognition and control">
 </p>
 <p align='center'>
-  Sensor Hardware
+  Figure 5: Sensor Hardware
 </p>
 
 - BN055 9-axis IMU
@@ -108,7 +108,7 @@ This hardware was then put together on a breadboard which had a push button and 
   <img width="200" src="./media/controller.png" alt="IMU drift">
 </p>
 <p align='center'>
-  UWB + IMU "smart Controller
+  Figure 6: UWB + IMU "smart Controller
 </p>
 
 
@@ -118,7 +118,8 @@ This hardware was then put together on a breadboard which had a push button and 
   <img width="800" src="./media/Pose_estimation.png" alt="IMU drift">
 </p>
 <p align='center'>
-  Methods to Detect Orientation and Pose Estimations
+  Figure 7: Methods to Detect Orientation and Pose Estimations
+</p>
 
 To achieve accurate detection of where a user is pointing a controller in free space, the two measurements that are needed are orientation estimation (Alpha, Beta, Gamma), and pose estimation (x, y, z). 
 
@@ -130,7 +131,7 @@ To obtain a pose estimation, the goal of the project was to use the orientation 
   <img width="800" src="./media/rotation.png" alt="IMU drift">
 </p>
 <p align='center'>
-  Arduino Rotation Matrix Calculation
+  Figure 8: Arduino Rotation Matrix Calculation
 </p>
 
 By using the above translated accelerations, you can integrate acceleration to get velocity, and integrate velocity to get position. The biggest limiting factor with this approach is that the acceleromter is prone to drift and since position is a result of a double integrataion, positional error can be accumulated over time. The second method that was initially used to estimate position was using one UWB anchor and tag, where the initial anchor position in the room was known. By having one tag in the room and getting a distance measurment from the UWB, the anchor creates a sphere of possible positions that the tag could be in relation to the anchor. The idea was that over time if we combined both positional observation from the acceleration and distance observations from the UWB anchor, the possible locations where a user is could be reduced overtime be able to conclude the user could only be in one possible spot.
@@ -145,7 +146,7 @@ To test the accuracies of accelerometer readings, a stationary IMU test was perf
   <img width="800" src="./media/IMU_drift.png" alt="IMU drift">
 </p>
 <p align='center'>
-  Stationary Test Accelerometer Position Estimation over 3 minutes
+  Figure 9: Stationary Test Accelerometer Position Estimation over 3 minutes
 </p>
 
 # IMU Orientation Estimation Evaluation
@@ -157,14 +158,14 @@ To test the accuracies of the Alpha, Beta, and Gamma values provided by the IMU 
   <img width="800" src="./media/angle_data.png" alt="IMU drift">
 </p>
 <p align='center'>
-  True Angle Versus Angle Estimation
+  Figure 10: True Angle Versus Angle Estimation
 </p>
 
 <p align='center'>
   <img width="800" src="./media/Angle_Error.png" alt="IMU drift">
 </p>
 <p align='center'>
-  Average Angle Error for Alpha, Beta, Gamma angles
+  Figure 11: Average Angle Error for Alpha, Beta, Gamma angles
 </p>
 
 
