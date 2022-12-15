@@ -184,7 +184,7 @@ After using the controller in a experiment setting, one observation was that mos
   <img width="400" src="./media/trick1.png" alt="IMU drift">
 </p>
 <p align='center'>
-  Trick 1: Assme user fixed height (Interection of plane and a sphere)
+  Figure 12: Trick 1, Assme user fixed height (Interection of plane and a sphere)
 </p>
 
 
@@ -197,7 +197,7 @@ The final idea used was to strategically plave the anchors. If we are assume we 
   <img width="400" src="./media/trick2.png" alt="IMU drift">
 </p>
 <p align='center'>
-  Trick 2: Strategic Anchor placement (Room circle intersects)
+  Figure 13: Trick 2, Strategic Anchor placement (Room circle intersects)
 </p>
 
 
@@ -213,10 +213,13 @@ To detect where a user was intending to point, the position estimation and the o
 To allow for visual represenation of the position, orentation, and object selection of the device, a python GUI was created. This GUI displays how the controller is estimated to poistioned including the direction it is pointing (shown by the compass) and the tilt of the controller (shown by the tilt lines). It also renders the estimated user x and y positions in the room, the dimensions of the room, and displays the objects in the room (with configureable click placement). Finally, when an object is pointed at and the line of sight calculation detects selection,that object is rendered and can be controlled in the bottom right corner.
 
 <div align="center">
-      <a href="[https://www.youtube.com/watch?v=kZUTw9wRUHE]">
-         <img src="./media/magnetometer_thumb.png" style="width:70%;">
-      </a>
+  <a href="[https://www.youtube.com/watch?v=kZUTw9wRUHE]">
+     <img src="./media/magnetometer_thumb.png" style="width:70%;">
+  </a>
 </div>
+<p align='center'>
+  Video 1: Magnetometer Demo
+</p>
 
 
 When an object pointed at and the button on the controller is clicked, an illustration highlights the line of sight of the controller along with the device that was chosen. For proof of concept smart lights were added and would toggle upon button selection if chosen.
@@ -225,23 +228,29 @@ When an object pointed at and the button on the controller is clicked, an illust
   <img src="./media/gui.PNG" alt="gui" style="width:70%;">
 </p>
 <p align='center'>
-  Image of GUI with user selecting/controlling bluetooth speaker
+  Figure 14: Image of GUI with user selecting/controlling bluetooth speaker
 </p>
 
 ##Insert videos depicting controller use here
 
 <div align="center">
-      <a href="[https://www.youtube.com/watch?v=5yLzZikS15k]">
-         <img src="./media/202_B_thumb.png" style="width:70%;">
-      </a>
+  <a href="[https://www.youtube.com/watch?v=5yLzZikS15k]">
+     <img src="./media/202_B_thumb.png" style="width:70%;">
+  </a>
 </div>
+<p align='center'>
+  Video 2: Two Smart Device Demo
+</p>
 
 
 <div align="center">
-      <a href="[https://www.youtube.com/watch?v=BKybWUbtDew]">
-         <img src="./media/202_E_thumb.png" style="width:70%;">
-      </a>
+  <a href="[https://www.youtube.com/watch?v=BKybWUbtDew]">
+     <img src="./media/202_E_thumb.png" style="width:70%;">
+  </a>
 </div>
+<p align='center'>
+  Video 3: ### Smart Device Demo
+</p>
 
 
 # 5. Discussion and Conclusions
