@@ -209,9 +209,9 @@ When an object pointed at and the button on the controller is clicked, an illust
 
 ##Insert videos depicting controller use here
 
-[![Two_Smart_Light_Demo](./media/202_E_thumb.png)](https://www.youtube.com/watch?v=BKybWUbtDew "Two Smart Light Demo")
+[![Two_Smart_Light_Demo](./media/202_B_thumb.png)](https://youtu.be/DsVu9VUhcU8 "Two Smart Light Demo")
 
-[![Multi_Smart_Demo](./media/202_B_thumb.png)](https://youtu.be/DsVu9VUhcU8 "Several Smart Device Demo")
+[![Multi_Smart_Demo](./media/202_E_thumb.png)](https://www.youtube.com/watch?v=BKybWUbtDew "Several Smart Device Demo")
 
 
 # 5. Discussion and Conclusions
