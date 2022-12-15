@@ -209,7 +209,7 @@ When an object pointed at and the button on the controller is clicked, an illust
 
 ##Insert videos depicting controller use here
 
-[![Everything Is AWESOME](https://img.youtube.com/vi/StTqXEQ2l-Y/0.jpg)](https://www.youtube.com/watch?v=StTqXEQ2l-Y "Everything Is AWESOME")
+[![Two_Smart_Light_Demo](./media/202_E_thumb.png)](https://www.youtube.com/watch?v=BKybWUbtDew "Two Smart Light Demo")
 
 
 # 5. Discussion and Conclusions
