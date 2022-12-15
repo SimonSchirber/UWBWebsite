@@ -16,6 +16,9 @@ As the number of smart devices in a household continues to grow there is need fo
 <p align='center'>
   <img width="200" src="./media/phone.png" alt="User pointing phone for device recognition and control">
 </p>
+<p align='center'>
+  Smartphone controllign smart devices
+</p>
 
 # 1. Introduction
 
@@ -59,11 +62,17 @@ In a paper by Zwirello et al. [CITE] indoor localization using UWB is done by ri
 <p align='center'>
   <img width="400" src="./media/UWB_range.png" alt="UWB Anchor Positioning Example">
 </p>
+<p align='center'>
+  Example UWB anchor scheme [CITE]
+</p>
 
 The goal of this group was to find and optimal positioning algorithm that could use many anchors to find very precise location. For systems using few UWB anchors they found that the optimal approach is to simple estimate the location of the tag as somewhere on the surface of a sphere centered at each anchor with a radius equal to the range measurment. For a 3-D space, 4 anchors are need to pinpoint the location of a tag to one point. As this project uses a maximum of 2 anchors, the best estimate is somewhere on a circle that is the intersection of 2 spheres. A representation of this intersection is shown in the figure below.
 
 <p align='center'>
   <img width="400" src="./media/sphere_intersect.png" alt="Intersection of 2 Spheres">
+</p>
+<p align='center'>
+  Intersection of two spheres [CITE]
 </p>
 
 IMU Indoor Localization
@@ -72,14 +81,22 @@ In a paper by Ibrahim et al. [CITE] indoor localization was achieved using a 9-D
 <p align='center'>
   <img width="400" src="./media/IMU_experiment.png" alt="IMU Localization Experimetnt [CITE]">
 </p>
+<p align='center'>
+  Graph of IMU localization experiment [CITE]
+</p>
 
 This data is very impressive and lends some support to the feasibility of doing human localiztion with IMU data but it relied on several crucial assumptions. The assumptions made by this group was that the subject have the IMU sensor attached at the belt and that the subject always be moving forward. For this project, the user must be allowed to wave their smartphone around the room to point at smart devices and so the assumption of having the IMU be fixed on the body was simply not feasible. Allowing the user to wave the smartphone around introduces far too much noise in the reading the come up with any useful data to predict position from the IMU data.
 # 3. Technical Approach
 
 ## Hardware
+
 <p align='center'>
   <img width="400" src="./media/Sensors.png" alt="User pointing phone for device recognition and control">
 </p>
+<p align='center'>
+  !!!!!!!!!!! [CITE]
+</p>
+
 - BN055 9-axis IMU
 - ESP32 Wrover
 - Qorvo DWM300 (1 Initiator, 1 Tag)
