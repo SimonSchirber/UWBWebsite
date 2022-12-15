@@ -94,7 +94,7 @@ This data is very impressive and lends some support to the feasibility of doing 
   <img width="400" src="./media/Sensors.png" alt="User pointing phone for device recognition and control">
 </p>
 <p align='center'>
-  !!!!!!!!!!! [CITE]
+  Sensor Hardware
 </p>
 
 - BN055 9-axis IMU
