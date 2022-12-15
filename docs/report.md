@@ -270,6 +270,5 @@ Overall, we were satisfied with the ability of the system to detect smart device
 
 
 ## Project Links
-* [Proposal](proposal)
 * [Final Presentation Slides](https://docs.google.com/presentation/d/1ARPfKs8R3b8PLh7hjExXQs66cmnulIzx0FZq7Vi8yAQ/edit?usp=sharing)
 * [Github Repo](https://github.com/SimonSchirber/Ultra-Wide-Band-M202)
