@@ -11,7 +11,7 @@
 
 # Abstract
 
-As the number of smart devices in a household continues to grow there is need for a system to distinguish and control said devices. The goal of this project is develop as system on top of the sensors available in current smartphones to allow a user to interact with multiple smart devices indoors. Current smartphones are equipped with both IMU sensing and UWB ranging, by leveraging these sensors we have created a system to introduce two UWB anchors in a known space to facilitate localization in said space. Then, by combining the location estimate with the IMU data for where the user is pointing their smartphone a smart device in a room can be selected. After this selection is made the user can control the smart device and the stimulus is broadcasted over BLE.
+As the number of smart devices in a household continues to grow there is need for a system to distinguish and control said devices. The goal of this project is to develop a system on top of the sensors available in current smartphones to allow a user to interact with multiple smart devices indoors. Current smartphones are equipped with both IMU sensing and UWB ranging, by leveraging these sensors we have created a system to introduce two UWB anchors in a known space to facilitate localization in said space. Then, by combining the location estimate with the IMU data as a user is pointing their smartphone at a smart device the can be selected. After this selection is made the user can control the smart device with stimulus broadcasted over BLE.
 
 <p align='center'>
   <img width="200" src="./media/phone.png" alt="User pointing phone for device recognition and control">
@@ -24,27 +24,27 @@ As the number of smart devices in a household continues to grow there is need fo
 
 ## Motivation & Objective
 
-Current estimates expect the number of IoT devices to hit 30 Billion by 2025 with continous exponential growth [1]. With the growth of avaiable devices, the number of smart devices that each user has to manage also continues to grow. This increase in devices per user, makes it continuously harder for users to manage and control their devices in an intuitive way. The goal of the project is to create a localization and orientation technique for detecting and controlling smart device objects in a room via pointer control using only the sensors available in smartphones today. The project aims at accomplishing this with the least amount of additional sensors as possible.
+Current estimates expect the number of IoT devices to hit 30 Billion by 2025 assuming continous exponential growth [1]. Considering the rapid growth of avaiable devices, the number of smart devices that each individual user is likely to manage also continues to grow. This increase in devices per user makes it continuously harder for users to manage and control their devices in an intuitive way. The goal of the project is to create a localization and orientation technique for detecting and controlling smart device objects in a room via pointer control using only the sensors available in current smartphones. The project aims to accomplish this with the least amount of additional sensors possible.
  
 ## Todays Limitations
 
-Most localization techniques used today include GPS, bluetooth, or Wi-fi ranging. The localizations techniques have accuracies in the range of 1-5m and so are generally not considered to be precise enough to distinguish interactions in a typical home setting. Additionally these techniques each have ranging capabilities which also can have limitations such as not being in a building with cement walls for GPS and being within close proximity for BLE and Wifi. UWB ranging techniques on the other hand offers localization accuracies within +/-20cm per anchor tag pair. This localization precision is required for accurate indoor user interation tracking. 
+The most common localization techniques in use today include GPS, bluetooth, or Wi-fi ranging. The localizations techniques have accuracies in the range of 1-5m and so are generally not considered to be precise enough to distinguish interactions in a typical home setting. Additionally these techniques each have ranging capabilities which also can have limitations such as not being in a building with cement walls in the case of GPS or needing to be within very close proximity for BLE and Wifi. UWB ranging techniques on the other hand offer localization accuracies within +/-20cm per anchor tag pair. This localization precision is required for accurate indoor user interation tracking. 
 
 # Novelty, Rationale, and Impact: 
 
 This project is novel because it present a feasable method for intuitively managing smart devices, and provides a novel approach localization techniques using UWB and IMU data that could stretch beyond the intended use case. 
-JAMes Note:This was 3 sections combined into one, I dont know what else to add to this
+
 # Challenges: 
-- using as few UWB anchors as possible while still providing accurate location data
-- succesfully proceesing IMU data to understand movements of humans while being able to filter out drift
-- accuratly fusing orientation and position to make predictions about intended line of sight object selections
+- Use as few UWB anchors as possible while still providing accurate location data.
+- Succesfully process IMU data to understand movements of humans while being able to filter out drift.
+- Accurately fuse orientation and position to make predictions about intended line of sight object selections.
 
 # Requirements for Success: 
 - Create a "Smart Controller" with IMU and UWB sensor to ESP32 microcontroller to be used to test accuracies.
-- Tune UWB tag and initiator antennas to offer accurate measurements
-- Filter UWB position etimates to allow for continous/not noisy readings
-- Create GUI which illustrates position of objects in the room and the guesses of which object the device is interacting
-- Demonstrate the use of a controller on a smart object
+- Tune UWB tag and initiator antennas to offer accurate measurements.
+- Filter UWB position estimates to allow for continous and denoised readings.
+- Create GUI which illustrates positions of objects in a room and the guesses which object the smartphone is pointing to.
+- Demonstrate the use of a controller on a smart object.
 
 # Metrics of Success: 
 - Positional Accuracy (x, y, z)
@@ -52,12 +52,12 @@ JAMes Note:This was 3 sections combined into one, I dont know what else to add t
 - Cost and number of sensors needed to perform localization
 - Ability of controller to distinguish between multiple objects in a room
 
-
 # 2. Related Work
-Indoor localiztion is a very wider area of research that this project builds upon. Two specific techniques for indoor localization that are used in this project are UWB indoor localiztion and IMU localization.
+
+Indoor localiztion is a wide area of research that this project builds upon. Two specific techniques for indoor localization that are used in this project are UWB indoor localiztion and IMU localization. Background on curtrent state of the art techniques are shown in the following paper reviews to provide background for the techniques used by this project.
 
 UWB Indoor Localization
-In a paper by Zwirello et al. [CITE] indoor localization using UWB is done by rigging a space with many anchors and ranging to a tag somewhere in the space. This group analyzed both the optimal locations for placing UWB in a space as well as the optimal algorithms for converting the ranging data into an absolute position. The following figure shows an example scheme of anchors in a cube space.
+In a paper by Zwirello et al. [2] indoor localization using UWB is done by rigging a space with many anchors which range to a tag somewhere in the space. This group analyzed both the optimal locations for placing UWB anchors in a space as well as the optimal algorithms for converting the ranging data into an absolute position. The following figure shows an example scheme of anchors in a cube space.
 
 <p align='center'>
   <img width="400" src="./media/UWB_range.png" alt="UWB Anchor Positioning Example">
@@ -66,7 +66,7 @@ In a paper by Zwirello et al. [CITE] indoor localization using UWB is done by ri
   Figure 2: Example UWB anchor scheme [2]
 </p>
 
-The goal of this group was to find and optimal positioning algorithm that could use many anchors to find very precise location. For systems using few UWB anchors they found that the optimal approach is to simple estimate the location of the tag as somewhere on the surface of a sphere centered at each anchor with a radius equal to the range measurment. For a 3-D space, 4 anchors are need to pinpoint the location of a tag to one point. As this project uses a maximum of 2 anchors, the best estimate is somewhere on a circle that is the intersection of 2 spheres. A representation of this intersection is shown in the figure below.
+In order to find an optimal positioning algorithm, this group did not limit the number of available anchors for a given tag. For systems using few UWB anchors they found that the optimal approach is to simple estimate the location of the tag as somewhere on the surface of a sphere centered at each anchor with a radius equal to the range measurment. For a 3-D space, 4 anchors are need to pinpoint the location of a tag to one point. As this project uses a maximum of 2 anchors, the best estimate is somewhere on a circle that is the intersection of 2 spheres. A representation of this intersection is shown in Figure 3.
 
 <p align='center'>
   <img width="400" src="./media/sphere_intersect.png" alt="Intersection of 2 Spheres">
@@ -76,7 +76,7 @@ The goal of this group was to find and optimal positioning algorithm that could 
 </p>
 
 IMU Indoor Localization
-In a paper by Ibrahim et al. [CITE] indoor localization was achieved using a 9-DOF IMU sensor and a barometric pressure sensor. The basis of the system was to find the derivative of the acceleration to obtain the jerk and then take the triple integration to determine displacement. This is done in an attempt to reduce the effects of sensor drift on the overall measurements. The pressure measurement was used to estimate the height by making assumptions about how atmospheric pressure decreases as height increases. They then passed these measurements through a Kalman filter to find the displacement estimates and were able to track a walk through a multi-story building withing 3% error. The graph of this experiment is shown in the figure below.
+In a paper by Ibrahim et al. [3] indoor localization was achieved using a 9-DOF IMU sensor and a barometric pressure sensor. The basis of the system was to find the derivative of the acceleration to obtain the jerk and then take the triple integration of jerk to determine displacement. This is done in an attempt to reduce the effects of sensor drift on the overall measurements. The pressure measurement was used to estimate the height by making assumptions about how atmospheric pressure decreases as height increases. They then passed these measurements through a Kalman filter to find the displacement estimates and were able to track a walk through a multi-story building within 3% error. The graph of this experiment is shown in Figure 4.
 
 <p align='center'>
   <img width="400" src="./media/IMU_experiment.png" alt="IMU Localization Experimetnt [3]">
@@ -85,7 +85,8 @@ In a paper by Ibrahim et al. [CITE] indoor localization was achieved using a 9-D
   Figure 4: Graph of IMU localization experiment [3]
 </p>
 
-This data is very impressive and lends some support to the feasibility of doing human localiztion with IMU data but it relied on several crucial assumptions. The assumptions made by this group was that the subject have the IMU sensor attached at the belt and that the subject always be moving forward. For this project, the user must be allowed to wave their smartphone around the room to point at smart devices and so the assumption of having the IMU be fixed on the body was simply not feasible. Allowing the user to wave the smartphone around introduces far too much noise in the reading the come up with any useful data to predict position from the IMU data.
+This data is very impressive and lends some support to the feasibility of doing human localiztion with IMU data, but they relied on several crucial assumptions. The assumptions made by this group was that the subject have the IMU sensor attached at the belt and that the subject always be moving forward. For this project, the user must be allowed to wave their smartphone around the room to point at smart devices and so the assumption of having the IMU be fixed on the body was simply not feasible. Allowing the user to wave the smartphone around introduces far too much noise in the readings to extract any useful data to predict position from the IMU data.
+
 # 3. Technical Approach
 
 ## Hardware
@@ -101,8 +102,7 @@ This data is very impressive and lends some support to the feasibility of doing 
 - ESP32 Wrover
 - Qorvo DWM300 (1 Initiator, 1 Tag)
 
-This hardware was then put together on a breadboard which had a push button and green LED to represent a controller which would be replaced by a phone and interactable controls screen in the future. The button was used to calibrate the controller to indicate when it was aligned with the room, and to interacte/toggle the smart lights that were used during testing.
-
+This hardware was assembled on a breadboard which had a push button and green LED to represent a controller. This button would be replaced by a phone and interactable controls screen in the future. The button was used to calibrate the controller to indicate how it was aligned with the room, and to interacte/toggle the smart lights that were used during testing.
 
 <p align='center'>
   <img width="200" src="./media/controller.png" alt="IMU drift">
@@ -121,9 +121,9 @@ This hardware was then put together on a breadboard which had a push button and 
   Figure 7: Methods to Detect Orientation and Pose Estimations
 </p>
 
-To achieve accurate detection of where a user is pointing a controller in free space, the two measurements that are needed are orientation estimation (Alpha, Beta, Gamma), and pose estimation (x, y, z). 
+To achieve an accurate estimate of where a user is pointing a controller in free space, the two measurements that are needed are orientation estimation (Alpha, Beta, Gamma), and pose estimation (x, y, z). 
 
-To obtain an oreintation estimation the 9 axis IMU was used. There are two ways that a 9 axis IMU can detect orientation. The first method is by sensing where the magnetic fields point with the magnetometer and where gravity acceleration is pointing with the accelerometer, and by taking the cross product of theses two vectors we can get orientation. The second method is if we know the original orientation and the gyroscope is working perfectly, the angular rotation multiplied by time will tell us the orientation of an object. The BN055 IMU and built in Arm Cortex M0 microprocessor provides cutom software to fuse these two estimations together to make a fused orientation estimate which can be update at 100Hz.  
+To obtain an oreintation estimation the 9-DOF IMU was used. There are two ways that a 9-DOF IMU can detect orientation. The first method is by sensing where the magnetic fields point with the magnetometer and where gravity acceleration is pointing with the accelerometer. By taking the cross product of theses two vectors we can get orientation. The second method requires the original orienation and gyroscope data be known perfectly. If this assumption holds the angular rotation multiplied by time will tell us the orientation of an object. The BN055 IMU and built in Arm Cortex M0 microprocessor provides custom software to fuse these two estimations together to make a fused orientation estimate which can be update at 100Hz.  
 
 To obtain a pose estimation, the goal of the project was to use the orientation estimation and fuse it with IMU and UWB measurements to get X, Y an Z cordinates. In theory there are two methods to get position with this approach. The first is if you know relative orientation of the controller to the room you are in, you can perform a tranformational rotation on the acceleration sensors to get relative x, y, and z positional accelerations.
 
@@ -230,8 +230,6 @@ When an object pointed at and the button on the controller is clicked, an illust
 <p align='center'>
   Figure 14: Image of GUI with user selecting/controlling bluetooth speaker
 </p>
-
-##Insert videos depicting controller use here
 
 <div align="center">
   <a href="[https://www.youtube.com/watch?v=5yLzZikS15k]">
