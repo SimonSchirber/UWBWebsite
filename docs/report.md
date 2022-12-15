@@ -209,7 +209,7 @@ When an object pointed at and the button on the controller is clicked, an illust
 
 ##Insert videos depicting controller use here
 
-<div align="left">
+<div align="center">
       <a href="[https://www.youtube.com/watch?v=5yLzZikS15k](https://youtu.be/DsVu9VUhcU8)">
          <img src="./media/202_B_thumb.png" style="width:50%;">
       </a>
