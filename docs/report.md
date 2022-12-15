@@ -200,7 +200,7 @@ To allow for visual represenation of the position, orentation, and object select
 
 When an object pointed at and the button on the controller is clicked, an illustration highlights the line of sight of the controller along with the device that was chosen. For proof of concept smart lights were added and would toggle upon button selection if chosen.
 
-<p align='center'>
+<p align='center' text-align='center'>
   <img src="./media/gui.PNG" alt="gui" style="width:70%;">
   
   Image of GUI with user selecting/controlling bluetooth speaker
