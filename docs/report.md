@@ -11,7 +11,7 @@
 
 # Abstract
 
-As the number of smart devices in a household continues to grow there is need for a system to distinguish and control said devices. The goal of this project is to develop a system on top of the sensors available in current smartphones to allow a user to interact with multiple smart devices indoors. Current smartphones are equipped with both IMU sensing and UWB ranging, by leveraging these sensors we have created a system to introduce two UWB anchors in a known space to facilitate localization in said space. Then, by combining the location estimate with the IMU data as a user is pointing their smartphone at a smart device the can be selected. After this selection is made the user can control the smart device with stimulus broadcasted over BLE.
+As the number of smart devices in a household continues to grow, there is need for a system to be able to distinguish between and control the devices. The goal of this project is to develop a system building off of sensors available in current smartphones to allow a user to easily manage and interact with multiple smart devices indoors. Current smartphones are equipped with both IMU and UWB sensors. By fusing these sensors measurements and introducing two UWB anchors, we can sucessfully provide orientation and pose estimations of a users controller or phone. With known positions of the devices in a room, we can then deduct which device a user is pointing at to be controlled in a room and render it in a custom GUI. After this selection is made the user can control the smart device with stimulus broadcasted over BLE.
 
 <p align='center'>
   <img width="200" src="./media/phone.png" alt="User pointing phone for device recognition and control">
@@ -28,11 +28,11 @@ Current estimates expect the number of IoT devices to hit 30 Billion by 2025 ass
  
 ## Todays Limitations
 
-The most common localization techniques in use today include GPS, bluetooth, or Wi-fi ranging. The localizations techniques have accuracies in the range of 1-5m and so are generally not considered to be precise enough to distinguish interactions in a typical home setting. Additionally these techniques each have ranging capabilities which also can have limitations such as not being in a building with cement walls in the case of GPS or needing to be within very close proximity for BLE and Wifi. UWB ranging techniques on the other hand offer localization accuracies within +/-20cm per anchor tag pair. This localization precision is required for accurate indoor user interation tracking. 
+The most common localization techniques in use today include GPS, bluetooth, or Wi-fi ranging. The localizations techniques have accuracies in the range of 1-5m and so are generally not considered to be precise enough to distinguish interactions in a typical home setting. Additionally these techniques each have ranging capabilities which also can have limitations. An example of the limitations include not being able to detect users position inside buildings with cement walls in the case of GPS or needing to be within very close proximity for BLE and Wifi and relying on signal gain measurments. UWB ranging techniques on the other hand offer localization accuracies within +/-20cm per anchor tag pair and can work indoors. This position tracking precision is required for users to be able to control devices indoors and be able to distinguish between multiple objects in a room. 
 
 # Novelty, Rationale, and Impact: 
 
-This project is novel because it present a feasable method for intuitively managing smart devices, and provides a novel approach localization techniques using UWB and IMU data that could stretch beyond the intended use case. 
+This project is novel because it presents a feasable method for intuitively managing smart devices, and provides a novel approach to localization techniques using UWB and IMU data. This localization and orientation techniques also can be used for many applications beyond he intended use case such as automatic device powering depending on a user positions in a home, tracking a users movements during the day, and locking and unlocking secure devices depending on the user and their position/movements. 
 
 # Challenges: 
 - Use as few UWB anchors as possible while still providing accurate location data.
