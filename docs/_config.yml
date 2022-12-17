@@ -9,7 +9,7 @@ show_downloads: true
 
 # Name of website
 title: Smart Fusion
-description: Providing accurate loacalization and orientation using UWB and IMU sensor fusion to allowing for more intuitive smart home device control.
+description: Providing accurate loacalization and orientation estimations using UWB and IMU sensor fusion allowing for more intuitive smart home device management.
 
 github:
   zip_url: https://github.com/SimonSchirber/Ultra-Wide-Band-M202/blob/main/zipball/master/
