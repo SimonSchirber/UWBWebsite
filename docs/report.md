@@ -223,35 +223,20 @@ When an object is pointed at and the button on the controller is clicked, an ill
 
 The following videos show the GUI inaction. Video 1 gives a demonstration of the IMU magnetometer sensing to show the response time and give a general idea of the accuracy. Video 2 shows a demonstration with two smart lights placed in a room. When moving around the room, each light could be selected indepedently to wirelessly toggle between on and off. Video 3 shows a similar demonstration however there are additional dummy smart devices placed in the room. These dummy smart devices allow us to show the ability of the system to distinguish between devices that are behind one another or very close to each other.
 
-<div align="center">
-  <a href="https://www.youtube.com/watch?v=kZUTw9wRUHE">
-     <img src="./media/magnetometer_thumb.png" style="width:70%;">
-  </a>
-</div>
+[![Test](./media/magnetometer_thumb.png)](https://www.youtube.com/watch?v=kZUTw9wRUHE)
 <p align='center'>
   Video 1: Magnetometer Demo
 </p>
 
-<div align="center">
-  <a href="https://www.youtube.com/watch?v=5yLzZikS15k">
-     <img src="./media/202_B_thumb.png" style="width:70%;">
-  </a>
-</div>
+[![Test](./media/202_B_thumb.png)](https://www.youtube.com/watch?v=5yLzZikS15k)
 <p align='center'>
   Video 2: Two Smart Device Demo
 </p>
 
-
-<div align="center">
-  <a href="https://www.youtube.com/watch?v=BKybWUbtDew">
-     <img src="./media/202_E_thumb.png" style="width:70%;">
-  </a>
-</div>
+[![Test](./media/202_E_thumb.png)](https://www.youtube.com/watch?v=BKybWUbtDew)
 <p align='center'>
   Video 3: 5 Smart Device Demo
 </p>
-
-[![Test](./media/202_E_thumb.png)](https://www.youtube.com/watch?v=BKybWUbtDew)
 
 
 # 5. Discussion and Conclusions
