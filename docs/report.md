@@ -251,6 +251,8 @@ The following videos show the GUI inaction. Video 1 gives a demonstration of the
   Video 3: 5 Smart Device Demo
 </p>
 
+[![Test](./media/202_E_thumb.png)](https://www.youtube.com/watch?v=BKybWUbtDew)
+
 
 # 5. Discussion and Conclusions
 
