@@ -12,6 +12,6 @@ title: Smart Fusion
 description: Providing accurate loacalization and orientation estimations using UWB and IMU sensor fusion, allowing for more intuitive smart home device management.
 
 github:
-  zip_url: https://github.com/SimonSchirber/Ultra-Wide-Band-M202/main/zipball/master/
-  tar_url: https://github.com/SimonSchirber/Ultra-Wide-Band-M202/main/tarball/master
+  zip_url: https://github.com/SimonSchirber/Ultra-Wide-Band-M202/main/Main/zipball/master/
+  tar_url: https://github.com/SimonSchirber/Ultra-Wide-Band-M202/main/Main/tarball/master
   repository_url: https://github.com/SimonSchirber/Ultra-Wide-Band-M202
