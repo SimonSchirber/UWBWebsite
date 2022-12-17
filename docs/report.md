@@ -32,19 +32,19 @@ The most common localization techniques in use today include GPS, bluetooth, or 
 
 # Novelty, Rationale, and Impact: 
 
-This project is novel because it presents a feasable method for intuitively managing smart devices, and provides a novel approach to localization techniques using UWB and IMU data. This localization and orientation techniques also can be used for many applications beyond he intended use case such as automatic device powering depending on a user positions in a home, tracking a users movements during the day, and locking and unlocking secure devices depending on the user and their position/movements. 
+This project is novel because it presents a feasable method for intuitively managing smart devices, and provides a novel approach to localization techniques using UWB and IMU data. These localization and orientation techniques also can be used for many applications beyond the intended use case, such as automatic device powering depending on a user positions in a home, tracking a users movements during the day, and locking and unlocking secure devices depending on the user and their position/movements. 
 
 # Challenges: 
 - Use as few UWB anchors as possible while still providing accurate location data.
-- Succesfully process IMU data to understand movements of humans while being able to filter out drift.
+- Succesfully process IMU data to understand directional movements and position of humans while being able to filter out IMU drift.
 - Accurately fuse orientation and position to make predictions about intended line of sight object selections.
 
 # Requirements for Success: 
-- Create a "Smart Controller" with IMU and UWB sensor to ESP32 microcontroller to be used to test accuracies.
-- Tune UWB tag and initiator antennas to offer accurate measurements.
-- Filter UWB position estimates to allow for continous and denoised readings.
-- Create GUI which illustrates positions of objects in a room and the guesses which object the smartphone is pointing to.
-- Demonstrate the use of a controller on a smart object.
+- Create a "Smart Controller" with a IMU and UWB sensor connected to ESP32 microcontroller to be used to test estimation accuracies.
+- Tune UWB responders and initiator antennas to offer accurate position measurements.
+- Filter UWB position estimates to allow for continous, non-noisy readings.
+- Create a GUI which illustrates positions of objects in a room and the guesses which object the controller is pointing to/interacting with.
+- Demonstrate the use of a controller on a smart object with multiple smart object in a room.
 
 # Metrics of Success: 
 - Positional Accuracy (x, y, z)
