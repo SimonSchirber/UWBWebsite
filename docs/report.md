@@ -228,7 +228,7 @@ The following videos show the GUI inaction. Video 1 gives a demonstration of the
   Video 1: Magnetometer Demo
 </p>
 
-[![Test](./media/202_B_thumb.png)](https://www.youtube.com/watch?v=5yLzZikS15k)
+[![Test](./media/202_B_thumb.png)](https://www.youtube.com/watch?v=DsVu9VUhcU8&t=2s)
 <p align='center'>
   Video 2: Two Smart Device Demo
 </p>
