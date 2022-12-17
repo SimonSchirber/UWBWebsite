@@ -85,7 +85,7 @@ In a paper by Ibrahim et al. [3] indoor localization was achieved using a 9-DOF 
   Figure 4: Graph of IMU localization experiment [3]
 </p>
 
-This data is very impressive and lends some support to the feasibility of doing human localiztion with IMU data, but they relied on several crucial assumptions. The assumptions made by this group was that the subject have the IMU sensor attached at the belt and that the subject always be moving forward. For this project, the user must be allowed to wave their smartphone around the room to point at smart devices and so the assumption of having the IMU be fixed on the body was simply not feasible. Allowing the user to wave the smartphone around introduces far too much noise in the readings to extract any useful data to predict position from the IMU data.
+This data is very impressive and lends some support to the feasibility of doing human localiztion with IMU data, but they relied on several crucial assumptions. The assumptions made by this group was that the subject have the IMU sensor attached at the belt and that the subject would always be moving forward. For this project, the user must be allowed to wave their smartphone around the room to point at smart devices, and so the assumption of having the IMU be fixed on the body was simply not feasible. Allowing the user to wave the smartphone around introduces far too much noise in the readings to extract any useful data to predict position from the IMU data.
 
 # 3. Technical Approach
 
@@ -102,13 +102,13 @@ This data is very impressive and lends some support to the feasibility of doing 
 - ESP32 Wrover
 - Qorvo DWM300 (1 Initiator, 1 Tag)
 
-This hardware was assembled on a breadboard which had a push button and green LED to represent a controller. This button would be replaced by a phone and interactable controls screen in the future. The button was used to calibrate the controller to indicate how it was aligned with the room, and to interacte/toggle the smart lights that were used during testing.
+This hardware was assembled on a breadboard which had a push button and green LED to represent a controller or smartphone. This button would be replaced by a phone and interactable touch screen controls in the future. The button was used to calibrate the controller to indicate how it was aligned with the room, and to interacte/toggle the smart lights that were used during testing. It is importnant to note the the DWM300 is FiRa compliant and thus can be programmed to interact with devices such as iphone 11+ and other smart phones. 
 
 <p align='center'>
   <img width="200" src="./media/controller.png" alt="IMU drift">
 </p>
 <p align='center'>
-  Figure 6: UWB + IMU "smart Controller
+  Figure 6: UWB + IMU "Smart Controller"
 </p>
 
 
@@ -121,11 +121,11 @@ This hardware was assembled on a breadboard which had a push button and green LE
   Figure 7: Methods to Detect Orientation and Pose Estimations
 </p>
 
-To achieve an accurate estimate of where a user is pointing a controller in free space, the two measurements that are needed are orientation estimation (Alpha, Beta, Gamma), and pose estimation (x, y, z). 
+To achieve an accurate estimate of where a user is pointing a controller in free space, the two measurements that are needed are orientation (Alpha, Beta, Gamma) and pose (x, y, z). 
 
-To obtain an oreintation estimation the 9-DOF IMU was used. There are two ways that a 9-DOF IMU can detect orientation. The first method is by sensing where the magnetic fields point with the magnetometer and where gravity acceleration is pointing with the accelerometer. By taking the cross product of theses two vectors we can get orientation. The second method requires the original orienation and gyroscope data be known perfectly. If this assumption holds the angular rotation multiplied by time will tell us the orientation of an object. The BN055 IMU and built in Arm Cortex M0 microprocessor provides custom software to fuse these two estimations together to make a fused orientation estimate which can be update at 100Hz.  
+To obtain an oreintation estimation the 9-DOF IMU was used. There are two ways that a 9-DOF IMU can detect orientation. The first method is by sensing where the magnetic fields point with the magnetometer and where gravity acceleration is pointing with the accelerometer. By taking the cross product of theses two vectors we can obtain relative orientation. The second method requires the original orienation and gyroscope data be known perfectly. If this assumption holds, the angular rotation multiplied by time will tell us the relative orientation of an object. The BN055 IMU and built in Arm Cortex M0 microprocessor provides custom software to fuse these two estimations together to make a fused orientation estimate which can be update at 100Hz.  
 
-To obtain a pose estimation, the goal of the project was to use the orientation estimation and fuse it with IMU and UWB measurements to get X, Y an Z cordinates. In theory there are two methods to get position with this approach. The first is if you know relative orientation of the controller to the room you are in, you can perform a tranformational rotation on the acceleration sensors to get relative x, y, and z positional accelerations.
+To obtain a pose estimation, the goal of the project was to use the orientation estimation and fuse it with IMU and UWB measurements to get X, Y and Z cordinates. In theory there are two methods to get position with this approach. The first is if you know relative orientation of the controller to the room you are in, you can perform a tranformational rotation on the acceleration sensors to get relative x, y, and z positional accelerations.
 
 <p align='center'>
   <img width="800" src="./media/rotation.png" alt="IMU drift">
@@ -134,7 +134,7 @@ To obtain a pose estimation, the goal of the project was to use the orientation 
   Figure 8: Arduino Rotation Matrix Calculation
 </p>
 
-By using the above translated accelerations, you can integrate acceleration to get velocity, and integrate velocity to get position. The biggest limiting factor with this approach is that the acceleromter is prone to drift. As position is a result of a double integrataion, positional error can be accumulated over time. The second method that was initially used to estimate position was using one UWB anchor and tag, where the initial anchor position in the room was known. By having one tag in the room and getting a distance measurment from the UWB, the anchor creates a sphere of possible positions that the tag could be in relation to the anchor. The idea was that over time if we combined both positional observation from the acceleration and distance observations from the UWB anchor, the possible locations where a user is could be reduced overtime be able to conclude the user could only be in one possible spot.
+By using the above translated accelerations, you can integrate acceleration to get velocity, and integrate velocity to get position. The biggest limiting factor with this approach is that the acceleromter is prone to drift. As position is a result of a double integrataion, positional error is accumulated over time. The second method that was initially used to estimate position was using one UWB anchor and tag, where the initial anchor position in the room was known. By having one tag in the room and getting a relative position movement measurment from the UWB, the anchor creates a sphere of possible positions that the tag could be in relation to the anchor. The idea was that over time if we combined positional changes seen by the accelerometer and distance observations from the UWB anchor, the possible locations where a user  could be is reduced to one possible spot.
 
 # 4. Evaluation and Results
 
